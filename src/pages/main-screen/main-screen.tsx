@@ -1,6 +1,10 @@
 import PlaceCard from '../../components/place-card/place-card';
 
-function MainScreen (): JSX.Element {
+type placeCardCount = {
+  placeCardCount: number;
+}
+
+function MainScreen ({placeCardCount}: placeCardCount): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -111,11 +115,7 @@ function MainScreen (): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
+                {Array.from({length:placeCardCount}, (_,index) => <PlaceCard key={index} />)}
               </div>
             </section>
             <div className="cities__right-section">
