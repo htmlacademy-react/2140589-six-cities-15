@@ -1,5 +1,5 @@
-const cardsPerView = {
+const AppSettings = {
   placeCardCount: 5,
 } as const;
 
-export default cardsPerView;
+export {AppSettings};
