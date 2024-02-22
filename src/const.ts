@@ -1,5 +1,18 @@
-const cardsPerView = {
+const AppSettings = {
   placeCardCount: 5,
 } as const;
 
-export default cardsPerView;
+enum AppRoutes {
+  Main = '/',
+  Login = '/login',
+  Favorites = '/favorites',
+  Offer = '/offer/:id',
+}
+
+enum AuthorizationStatus {
+  Auth = 'AUTH',
+  No_Auth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
+
+export {AppSettings, AppRoutes, AuthorizationStatus};
