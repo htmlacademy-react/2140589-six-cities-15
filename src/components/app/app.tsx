@@ -7,18 +7,19 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
+import { OfferCardType } from '../types/offer';
 
 
 type AppProps = {
-  placeCardCount: number;
+  offers: OfferCardType[];
 }
 
-function App({ placeCardCount }: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoutes.Main} element={<MainScreen placeCardCount={placeCardCount} />} />
+          <Route path={AppRoutes.Main} element={<MainScreen offers={offers} />} />
           <Route path={AppRoutes.Login} element={<LoginScreen />} />
           <Route path={AppRoutes.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.No_Auth}><FavoritesScreen /></PrivateRoute>} />
           <Route path={AppRoutes.Offer} element={<OfferScreen />} />

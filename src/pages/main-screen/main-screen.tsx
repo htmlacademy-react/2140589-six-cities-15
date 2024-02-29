@@ -1,12 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
-import PlaceCard from '../../components/place-card/place-card';
+import { OfferCardType } from '../../components/types/offer';
+import PlaceCardList from '../../components/place-card-list/place-card-list';
 
-type placeCardCount = {
-  placeCardCount: number;
+type MainScreenProps = {
+  offers: OfferCardType[];
 }
 
-function MainScreen ({placeCardCount}: placeCardCount): JSX.Element {
+function MainScreen ({offers}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -110,7 +111,7 @@ function MainScreen ({placeCardCount}: placeCardCount): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length:placeCardCount}, (_,index) => <PlaceCard key={index} />)}
+                <PlaceCardList offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">
