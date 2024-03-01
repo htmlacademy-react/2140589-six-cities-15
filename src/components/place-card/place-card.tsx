@@ -4,14 +4,20 @@ import { AppRoutes } from '../../const';
 
 type PlaceCardProps = {
   offer: OfferCardType;
+  onCardHover: (id: string | null) => void;
 }
 
-function PlaceCard ({offer}: PlaceCardProps): JSX.Element {
+function PlaceCard ({offer, onCardHover}: PlaceCardProps): JSX.Element {
   const {isPremium ,previewImage, title, price, type, rating, id} = offer;
   const width = `${Math.round(rating * 20)}%`;
   const url = generatePath(AppRoutes.Offer, {id});
+  const handleOnMouseEnter = () => onCardHover(id);
+  const handleOnMouseLeve = () => onCardHover(null);
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card"
+      onMouseEnter={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeve}
+    >
       {isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
