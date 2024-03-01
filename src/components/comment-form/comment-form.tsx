@@ -1,12 +1,6 @@
-import { Fragment, useState } from 'react';
-
-const rates = [
-  {value: 5, title: 'prefectly'},
-  {value: 4, title: 'well'},
-  {value: 3, title: 'not bad'},
-  {value: 2, title: 'badly'},
-  {value: 1, title: 'terribly'},
-];
+import { useState } from 'react';
+import ReviewsRatingFormStars from '../reviews-rating-form-stars/reviews-rating-form-stars';
+import { rates } from '../../const';
 
 function CommentForm () {
   const [comment, setComment] = useState('');
@@ -19,36 +13,7 @@ function CommentForm () {
       <label className="reviews__label form__label" htmlFor="review">
                     Your review
       </label>
-      <div className="reviews__rating-form form__rating">
-        {
-          rates.map((rate) => {
-            const id = `${rate.value}-stars`;
-            return (
-              <Fragment key={rate.value}>
-                <input
-                  className="form__rating-input visually-hidden"
-                  name="rating"
-                  defaultValue={rate.value}
-                  id={id}
-                  type="radio"
-                  checked={rate.value === rating}
-                  onChange={handleRatingChange}
-                />
-                <label
-                  htmlFor={id}
-                  className="reviews__rating-label form__rating-label"
-                  title="perfect"
-                >
-                  <svg className="form__star-image" width={37} height={33}>
-                    <use xlinkHref="#icon-star" />
-                  </svg>
-                </label>
-              </Fragment>
-            );
-          }
-          )
-        }
-      </div>
+      <ReviewsRatingFormStars rates={rates} rating={rating} handleRatingChange={handleRatingChange}/>
 
       <textarea
         className="reviews__textarea form__textarea"
