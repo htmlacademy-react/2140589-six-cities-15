@@ -50,7 +50,7 @@ export const offers: OfferCardType[] = [
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg',
     },
     'isPremium': false,
-    'isFavorite': false,
+    'isFavorite': true,
     'rating': 5,
     'bedrooms': 5,
     'maxAdults': 5,
@@ -151,7 +151,7 @@ export const offers: OfferCardType[] = [
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
     },
     'isPremium': true,
-    'isFavorite': false,
+    'isFavorite': true,
     'rating': 1.2,
     'bedrooms': 1,
     'maxAdults': 3,
@@ -172,7 +172,7 @@ export const offers: OfferCardType[] = [
       'https://15.design.htmlacademy.pro/static/hotel/6.jpg'
     ],
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -204,7 +204,7 @@ export const offers: OfferCardType[] = [
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg',
     },
     'isPremium': false,
-    'isFavorite': false,
+    'isFavorite': true,
     'rating': 2.3,
     'bedrooms': 3,
     'maxAdults': 2,

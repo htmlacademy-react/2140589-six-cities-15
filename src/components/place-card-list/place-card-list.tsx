@@ -7,6 +7,7 @@ type PlaceCardListProps = {
 }
 
 function PlaceCardList ({offers}: PlaceCardListProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hoverCard, setHoverCard] = useState<string | null>(null);
   const handleHoverCard = (id: string | null) => setHoverCard(id);
   return (
