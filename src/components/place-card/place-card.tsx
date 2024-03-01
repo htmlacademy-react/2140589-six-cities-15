@@ -1,12 +1,15 @@
+import { Link, generatePath } from 'react-router-dom';
 import { OfferCardType } from '../types/offer';
+import { AppRoutes } from '../../const';
 
 type PlaceCardProps = {
   offer: OfferCardType;
 }
 
 function PlaceCard ({offer}: PlaceCardProps): JSX.Element {
-  const {isPremium ,previewImage, title, price, type, rating} = offer;
+  const {isPremium ,previewImage, title, price, type, rating, id} = offer;
   const width = `${Math.round(rating * 20)}%`;
+  const url = generatePath(AppRoutes.Offer, {id});
   return (
     <article className="cities__card place-card">
       {isPremium &&
@@ -14,7 +17,7 @@ function PlaceCard ({offer}: PlaceCardProps): JSX.Element {
         <span>Premium</span>
       </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={url}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -22,7 +25,7 @@ function PlaceCard ({offer}: PlaceCardProps): JSX.Element {
             height={200}
             alt={title}
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">

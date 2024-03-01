@@ -199,7 +199,7 @@ export const offers: OfferCardType[] = [
       'Coffee machine',
     ],
     'host': {
-      'isPro': true,
+      'isPro': false,
       'name': 'Angelina',
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/host/avatar-angelina.jpg',
     },
