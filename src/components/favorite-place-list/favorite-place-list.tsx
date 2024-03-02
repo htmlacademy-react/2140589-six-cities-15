@@ -1,4 +1,4 @@
-import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
+import PlaceCard from '../place-card/place-card';
 import { OfferCardType } from '../types/offer';
 
 type FavoritePlaceListProps = {
@@ -23,7 +23,7 @@ function FavoritePlaceList ({offers}: FavoritePlaceListProps) {
               </div>
               <div className="favorites__places">
                 {
-                  favOffersByCity.map((offer) => <FavoritePlaceCard offer={offer} key={offer.id}/>)
+                  favOffersByCity.map((offer) => <PlaceCard offer={offer} key={offer.id} variant='favorite'/>)
                 }
               </div>
             </li>

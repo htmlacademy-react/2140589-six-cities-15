@@ -5,13 +5,20 @@ export type Rates = {
   title: string;
 }
 
+const rates: Rates[] = [
+  {value: 5, title: 'prefectly'},
+  {value: 4, title: 'well'},
+  {value: 3, title: 'not bad'},
+  {value: 2, title: 'badly'},
+  {value: 1, title: 'terribly'},
+];
+
 type ReviewsRatingFormStarsProps = {
-  rates: Rates[];
   rating: number;
   onRateChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function ReviewsRatingFormStars ({rates, rating, onRateChange}: ReviewsRatingFormStarsProps) {
+function ReviewsRatingFormStars ({ rating, onRateChange}: ReviewsRatingFormStarsProps) {
   return (
     <div className="reviews__rating-form form__rating">
       {
