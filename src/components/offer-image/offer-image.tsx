@@ -1,14 +1,15 @@
 type OfferImageProps = {
   image: string;
+  title: string;
 }
 
-function OfferImage ({image}: OfferImageProps) {
+function OfferImage ({image, title}: OfferImageProps) {
   return (
     <div className="offer__image-wrapper" >
       <img
         className="offer__image"
         src={image}
-        alt="Photo studio"
+        alt={title}
       />
     </div>
   );

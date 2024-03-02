@@ -16,7 +16,7 @@ function OfferHost ({isPro, name, avatarUrl, description}: OfferHostProps) {
             src={avatarUrl}
             width={74}
             height={74}
-            alt={avatarUrl + name}
+            alt={name}
           />
         </div>
         <span className="offer__user-name">{name}</span>

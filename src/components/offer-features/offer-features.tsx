@@ -5,16 +5,17 @@ type OfferFeaturesProps = {
 }
 
 function OfferFeatures ({type, bedrooms, maxAdults}: OfferFeaturesProps) {
+  const quantity = bedrooms > 1 ? 'Bedrooms' : 'Bedroom';
   return (
     <ul className="offer__features">
       <li className="offer__feature offer__feature--entire">
         {type}
       </li>
       <li className="offer__feature offer__feature--bedrooms">
-        {bedrooms}
+        {bedrooms} {quantity}
       </li>
       <li className="offer__feature offer__feature--adults">
-        {maxAdults}
+        Max {maxAdults} adults
       </li>
     </ul>
   );

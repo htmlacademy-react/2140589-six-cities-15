@@ -51,7 +51,7 @@ function OfferScreen(): JSX.Element {
       </header>
       <main className="page__main page__main--offer">
         <section className="offer">
-          <OfferGallery images={images}/>
+          <OfferGallery images={images} title={title}/>
           <div className="offer__container container">
             <div className="offer__wrapper">
               {isPremium &&

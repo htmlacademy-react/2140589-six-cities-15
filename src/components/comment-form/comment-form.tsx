@@ -13,7 +13,7 @@ function CommentForm () {
       <label className="reviews__label form__label" htmlFor="review">
                     Your review
       </label>
-      <ReviewsRatingFormStars rates={rates} rating={rating} handleRatingChange={handleRatingChange}/>
+      <ReviewsRatingFormStars rates={rates} rating={rating} onRateChange={handleRatingChange}/>
 
       <textarea
         className="reviews__textarea form__textarea"

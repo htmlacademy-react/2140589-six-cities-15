@@ -1,13 +1,17 @@
 import { Fragment } from 'react';
-import { Rates } from '../types/rates';
+
+export type Rates = {
+  value: number;
+  title: string;
+}
 
 type ReviewsRatingFormStarsProps = {
   rates: Rates[];
   rating: number;
-  handleRatingChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onRateChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function ReviewsRatingFormStars ({rates, rating, handleRatingChange}: ReviewsRatingFormStarsProps) {
+function ReviewsRatingFormStars ({rates, rating, onRateChange}: ReviewsRatingFormStarsProps) {
   return (
     <div className="reviews__rating-form form__rating">
       {
@@ -22,7 +26,7 @@ function ReviewsRatingFormStars ({rates, rating, handleRatingChange}: ReviewsRat
                 id={id}
                 type="radio"
                 checked={rate.value === rating}
-                onChange={handleRatingChange}
+                onChange={onRateChange}
               />
               <label
                 htmlFor={id}
