@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainScreen from '../../pages/main-screen/main-screen';
 import { AppRoutes, AuthorizationStatus } from '../../const';
@@ -7,21 +8,24 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-
+import { OfferCardType } from '../types/offer';
+import { offers } from '../mocks/offers';
 
 type AppProps = {
-  placeCardCount: number;
-}
+  offers: OfferCardType[];
+};
 
-function App({ placeCardCount }: AppProps): JSX.Element {
+const favoriteOffers = offers.filter((offer) => offer.isFavorite);
+
+function App({offers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoutes.Main} element={<MainScreen placeCardCount={placeCardCount} />} />
+          <Route path={AppRoutes.Main} element={<MainScreen offers={offers} />} />
           <Route path={AppRoutes.Login} element={<LoginScreen />} />
-          <Route path={AppRoutes.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.No_Auth}><FavoritesScreen /></PrivateRoute>} />
-          <Route path={AppRoutes.Offer} element={<OfferScreen />} />
+          <Route path={AppRoutes.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritesScreen offers={favoriteOffers}/></PrivateRoute>} />
+          <Route path={AppRoutes.Offer} element={<OfferScreen/>} />
           <Route path='*' element={<PageErrorScreen />} />
         </Routes>
       </BrowserRouter>
