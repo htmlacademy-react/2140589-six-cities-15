@@ -36,7 +36,7 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
       <div className={infoWrapperClassName}>
         <div className="place-card__price-wrapper">
           <PlacePrice price={price} variant='placeCard'/>
-          <BookmarkButton isFavorite={isFavorite}/>
+          <BookmarkButton isFavorite={isFavorite} variant='placeCard'/>
         </div>
         <CardRating rating={rating} variant='placeCard'/>
         <h2 className="place-card__name">
