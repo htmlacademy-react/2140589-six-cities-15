@@ -11,7 +11,7 @@ function PlaceCardList ({offers}: PlaceCardListProps) {
   const [hoverCard, setHoverCard] = useState<string | null>(null);
   const handleHoverCard = (id: string | null) => setHoverCard(id);
   return (
-    offers.map((offer) => <PlaceCard offer={offer} key={offer.id} onCardHover={handleHoverCard}/>)
+    offers.map((offer) => <PlaceCard offer={offer} key={offer.id} onCardHover={handleHoverCard} variant='place'/>)
   );
 }
 

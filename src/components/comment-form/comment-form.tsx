@@ -1,19 +1,14 @@
-import { useState } from 'react';
 import ReviewsRatingFormStars from '../reviews-rating-form-stars/reviews-rating-form-stars';
-import { rates } from '../../const';
+import useCommentForm from './use-comment-form';
 
 function CommentForm () {
-  const [comment, setComment] = useState('');
-  const [rating, setRating] = useState(NaN);
-  const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value);
-  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => setRating(Number(e.target.value));
-  const isSubmitDisabled = Number.isNaN(rating) || comment.length < 50 || comment.length > 300;
+  const {comment, rating, handleCommentChange, handleRatingChange, isSubmitDisabled} = useCommentForm();
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
                     Your review
       </label>
-      <ReviewsRatingFormStars rates={rates} rating={rating} onRateChange={handleRatingChange}/>
+      <ReviewsRatingFormStars rating={rating} onRateChange={handleRatingChange}/>
 
       <textarea
         className="reviews__textarea form__textarea"

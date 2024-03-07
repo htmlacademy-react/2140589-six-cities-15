@@ -4,12 +4,20 @@ import { OfferCardType } from '../../components/types/offer';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../const';
+import Map from '../../components/map/map';
 
 type MainScreenProps = {
   offers: OfferCardType[];
 }
 
 function MainScreen ({offers}: MainScreenProps): JSX.Element {
+  const points = offers.map((offer) => offer.location);
+  const city = {
+    'latitude': 52.37454,
+    'longitude': 4.897976,
+    'zoom': 11
+  };
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -18,7 +26,7 @@ function MainScreen ({offers}: MainScreenProps): JSX.Element {
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
-            <Logo />
+            <Logo isActive/>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
@@ -117,7 +125,7 @@ function MainScreen ({offers}: MainScreenProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <Map city={city} points={points}/>
             </div>
           </div>
         </div>

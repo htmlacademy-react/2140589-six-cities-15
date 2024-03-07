@@ -7,6 +7,10 @@ import OfferInsideList from '../../components/offer-inside/offer-inside';
 import OfferFeatures from '../../components/offer-features/offer-features';
 import OfferHost from '../../components/offer-host/offer-host';
 import CommentForm from '../../components/comment-form/comment-form';
+import PremiumLabel from '../../components/premium-label/premium-label';
+import CardRating from '../../components/card-rating/card-rating';
+import PlacePrice from '../../components/place-price/place-price';
+import BookmarkButton from '../../components/bookmark-button/bookmark-button';
 
 function OfferScreen(): JSX.Element {
   const {id} = useParams();
@@ -14,8 +18,7 @@ function OfferScreen(): JSX.Element {
   if (!offer) {
     return <Navigate to='offer-not-found'/>;
   }
-  const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host} = offer;
-  const width = `${Math.round(rating * 20)}%`;
+  const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;
   return (
     <div className="page">
       <Helmet>
@@ -54,33 +57,16 @@ function OfferScreen(): JSX.Element {
           <OfferGallery images={images} title={title}/>
           <div className="offer__container container">
             <div className="offer__wrapper">
-              {isPremium &&
-                <div className="offer__mark">
-                  <span>Premium</span>
-                </div>}
+              <PremiumLabel isPremium={isPremium} variant='offerPage'/>
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
                   {title}
                 </h1>
-                <button className="offer__bookmark-button button" type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33}>
-                    <use xlinkHref="#icon-bookmark" />
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                <BookmarkButton isFavorite={isFavorite} variant='offerPage'/>
               </div>
-              <div className="offer__rating rating">
-                <div className="offer__stars rating__stars">
-                  <span style={{ width }} />
-                  <span className="visually-hidden">Rating</span>
-                </div>
-                <span className="offer__rating-value rating__value">{rating}</span>
-              </div>
+              <CardRating rating={rating} variant='offerPage'/>
               <OfferFeatures type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
-              <div className="offer__price">
-                <b className="offer__price-value">€{price}</b>
-                <span className="offer__price-text">&nbsp;night</span>
-              </div>
+              <PlacePrice price={price} variant='offerPage'/>
               <OfferInsideList goods={goods} />
               <OfferHost isPro={host.isPro} description={description} avatarUrl={host.avatarUrl} name={host.name}/>
               <section className="offer__reviews reviews">
@@ -256,7 +242,7 @@ function OfferScreen(): JSX.Element {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '100%' }} />
+                      <span style={{ width: '0%' }} />
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
