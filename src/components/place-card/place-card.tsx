@@ -5,13 +5,12 @@ import CardRating from '../card-rating/card-rating';
 import PlacePrice from '../place-price/place-price';
 import usePlaceCard from './use-place-card';
 import BookmarkButton from '../bookmark-button/bookmark-button';
-
-export type OfferVariant = 'favorite' | 'place';
+import { screenVariant } from '../types/screen-varinat';
 
 type PlaceCardProps = {
   offer: OfferCardType;
   onCardHover?: (id: string | null) => void;
-  variant: OfferVariant;
+  variant: screenVariant;
 }
 
 function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element {

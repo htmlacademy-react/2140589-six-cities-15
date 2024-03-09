@@ -120,9 +120,7 @@ function MainScreen ({offers}: MainScreenProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <PlaceCardList offers={offers}/>
-              </div>
+              <PlaceCardList offers={offers} variant='mainScreen'/>
             </section>
             <div className="cities__right-section">
               <Map city={city} points={points} variant='mainScreen'/>
