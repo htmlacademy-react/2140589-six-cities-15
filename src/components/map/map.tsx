@@ -3,15 +3,17 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from './use-map';
 import { Location } from '../types/location';
+import './styles.css';
 
 type MapProps = {
   city: Location;
   points: Location[];
+  variant: 'mainScreen' | 'offerScreen';
 }
 
-function Map({city, points}: MapProps) {
+function Map({city, points, variant}: MapProps) {
   const mapRef = useRef(null);
-  const map = useMap({mapRef, city});
+  const {map, className} = useMap({mapRef, city, variant});
 
   useEffect(() => {
     if (map) {
@@ -28,7 +30,7 @@ function Map({city, points}: MapProps) {
 
 
   return (
-    <section className="cities__map map" style={{height: '500px'}}
+    <section className={className} style={{height: '500px'}}
       ref={mapRef}
     />
   );

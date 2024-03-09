@@ -12,6 +12,7 @@ import PlacePrice from '../../components/place-price/place-price';
 import BookmarkButton from '../../components/bookmark-button/bookmark-button';
 import ReviewList from '../../components/review-list/review-list';
 import { comments } from '../../components/mocks/comments';
+import Map from '../../components/map/map';
 
 function OfferScreen(): JSX.Element {
   const {id} = useParams();
@@ -20,6 +21,16 @@ function OfferScreen(): JSX.Element {
     return <Navigate to='offer-not-found'/>;
   }
   const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;
+
+  const nearbyOffers = offers.filter((item) => item.id !== id);
+  const nearbyPoints = nearbyOffers.map((item) => item.location);
+
+  const city = {
+    'latitude': 52.37454,
+    'longitude': 4.897976,
+    'zoom': 11
+  };
+
   return (
     <div className="page">
       <Helmet>
@@ -73,7 +84,7 @@ function OfferScreen(): JSX.Element {
               <ReviewList comments={comments}/>
             </div>
           </div>
-          <section className="offer__map map" />
+          <Map points={nearbyPoints} city={city} variant='offerScreen'/>
         </section>
         <div className="container">
           <section className="near-places places">

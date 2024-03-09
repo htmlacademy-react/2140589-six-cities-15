@@ -125,7 +125,7 @@ function MainScreen ({offers}: MainScreenProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map city={city} points={points}/>
+              <Map city={city} points={points} variant='mainScreen'/>
             </div>
           </div>
         </div>
