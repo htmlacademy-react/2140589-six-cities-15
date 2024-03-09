@@ -6,11 +6,12 @@ import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInsideList from '../../components/offer-inside/offer-inside';
 import OfferFeatures from '../../components/offer-features/offer-features';
 import OfferHost from '../../components/offer-host/offer-host';
-import CommentForm from '../../components/comment-form/comment-form';
 import PremiumLabel from '../../components/premium-label/premium-label';
 import CardRating from '../../components/card-rating/card-rating';
 import PlacePrice from '../../components/place-price/place-price';
 import BookmarkButton from '../../components/bookmark-button/bookmark-button';
+import ReviewList from '../../components/review-list/review-list';
+import { comments } from '../../components/mocks/comments';
 
 function OfferScreen(): JSX.Element {
   const {id} = useParams();
@@ -69,44 +70,7 @@ function OfferScreen(): JSX.Element {
               <PlacePrice price={price} variant='offerPage'/>
               <OfferInsideList goods={goods} />
               <OfferHost isPro={host.isPro} description={description} avatarUrl={host.avatarUrl} name={host.name}/>
-              <section className="offer__reviews reviews">
-                <h2 className="reviews__title">
-                  Reviews · <span className="reviews__amount">1</span>
-                </h2>
-                <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img
-                          className="reviews__avatar user__avatar"
-                          src="img/avatar-max.jpg"
-                          width={54}
-                          height={54}
-                          alt="Reviews avatar"
-                        />
-                      </div>
-                      <span className="reviews__user-name">Max</span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{ width: '80%' }} />
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by
-                        the unique lightness of Amsterdam. The building is green and
-                        from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">
-                        April 2019
-                      </time>
-                    </div>
-                  </li>
-                </ul>
-                <CommentForm />
-              </section>
+              <ReviewList comments={comments}/>
             </div>
           </div>
           <section className="offer__map map" />

@@ -1,4 +1,4 @@
-import { Host } from './host';
+import { User } from './user';
 import { Location } from './location';
 
 
@@ -19,7 +19,7 @@ export type OfferCardType = {
   description: string;
   bedrooms: number;
   goods: string[];
-  host: Host;
+  host: User;
   images: string[];
   maxAdults: number;
 }
