@@ -31,7 +31,7 @@ export const comments: Comment[] = [
     'user': {
       'name': 'Tom',
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/avatar/2.jpg',
-      'isPro': false
+      'isPro': true
     }
   }
 ];

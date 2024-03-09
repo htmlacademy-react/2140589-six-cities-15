@@ -81,7 +81,7 @@ function OfferScreen(): JSX.Element {
               <OfferFeatures type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>
               <PlacePrice price={price} variant='offerPage'/>
               <OfferInsideList goods={goods} />
-              <OfferHost isPro={host.isPro} description={description} avatarUrl={host.avatarUrl} name={host.name}/>
+              <OfferHost user={host} description={description}/>
               <ReviewList comments={comments}/>
             </div>
           </div>

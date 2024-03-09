@@ -8,7 +8,7 @@ type usePlaceCardListProps = {
 function usePlaceCardList({variant}: usePlaceCardListProps) {
   const [hoverCard, setHoverCard] = useState<string | null>(null);
   const handleHoverCard = (id: string | null) => setHoverCard(id);
-  const isHoverEnabled = variant === 'mainScreen' || 'offerScreen';
+  const isHoverEnabled = variant === 'mainScreen' || 'offerScreen' && variant !== 'favoriteScreen';
 
   let listClassName = '';
 
