@@ -13,7 +13,7 @@ type MapProps = {
 
 function Map({city, points, variant}: MapProps) {
   const mapRef = useRef(null);
-  const {map, className} = useMap({mapRef, city, variant});
+  const {map, className, height} = useMap({mapRef, city, variant});
 
   useEffect(() => {
     if (map) {
@@ -30,7 +30,7 @@ function Map({city, points, variant}: MapProps) {
 
 
   return (
-    <section className={className} style={{height: '500px'}}
+    <section className={className} style={{height: height}}
       ref={mapRef}
     />
   );

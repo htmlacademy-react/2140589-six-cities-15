@@ -13,6 +13,7 @@ function useMap({mapRef, city, variant}: UseMapProps) {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef(false);
   const className = classNames(variant === 'mainScreen' ? 'cities__map' : 'offer__map', 'map');
+  const height = variant === 'mainScreen' ? 552 : 578;
 
   useEffect(() => {
     if (mapRef.current !== null && !isRenderedRef.current) {
@@ -38,7 +39,7 @@ function useMap({mapRef, city, variant}: UseMapProps) {
     }
   }, [mapRef, city]);
 
-  return {map, className};
+  return {map, className, height};
 }
 
 export default useMap;
