@@ -1,19 +1,20 @@
+import useCardRating from './use-card-rating';
+
 type CardRatingProps = {
   rating: number;
-  variant: 'offerPage' | 'placeCard';
+  variant: 'offerPage' | 'placeCard' | 'reviewsRating';
 }
 
 function CardRating ({rating, variant}: CardRatingProps) {
-  const width = `${Math.round(rating * 20)}%`;
-  const classPrefix = variant === 'placeCard' ? 'place-card' : 'offer';
+  const {width, cardClassName, starsClassName} = useCardRating({rating, variant});
   return (
-    <div className={`${classPrefix}__rating rating`}>
-      <div className={`${classPrefix}__stars rating__stars`}>
+    <div className={cardClassName}>
+      <div className={starsClassName}>
         <span style={{ width }} />
         <span className="visually-hidden">Rating</span>
       </div>
       { variant === 'offerPage' &&
-        <span className={`${classPrefix}__rating-value rating__value`}>{rating}</span>}
+        <span className='offer__rating-value rating__value'>{rating}</span>}
     </div>
   );
 }

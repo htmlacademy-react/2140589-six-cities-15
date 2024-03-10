@@ -15,4 +15,6 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export {AppSettings, AppRoutes, AuthorizationStatus};
+const formatDate = (date: string) => new Intl.DateTimeFormat('en-US', {month: 'long', year: 'numeric'}).format(new Date(date));
+
+export {AppSettings, AppRoutes, AuthorizationStatus, formatDate};

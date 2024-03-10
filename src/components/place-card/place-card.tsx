@@ -5,18 +5,18 @@ import CardRating from '../card-rating/card-rating';
 import PlacePrice from '../place-price/place-price';
 import usePlaceCard from './use-place-card';
 import BookmarkButton from '../bookmark-button/bookmark-button';
-
-export type OfferVariant = 'favorite' | 'place';
+import { screenVariant } from '../types/screen-varinat';
+import './styles.css';
 
 type PlaceCardProps = {
   offer: OfferCardType;
   onCardHover?: (id: string | null) => void;
-  variant: OfferVariant;
+  variant: screenVariant;
 }
 
 function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element {
   const {isPremium ,previewImage, title, price, type, rating, id, isFavorite} = offer;
-  const {url, handleOnMouseEnter, handleOnMouseLeve, width, height, articleClassName, imgWrapperClassName, infoWrapperClassName} = usePlaceCard({id, variant, onCardHover});
+  const {url, handleOnMouseEnter, handleOnMouseLeve, articleClassName, imgWrapperClassName, infoWrapperClassName} = usePlaceCard({id, variant, onCardHover});
   return (
     <article className={articleClassName}>
       <PremiumLabel isPremium={isPremium} variant='placeCard'/>
@@ -25,8 +25,6 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
           <img
             className="place-card__image"
             src={previewImage}
-            width={width}
-            height={height}
             alt={title}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeve}
