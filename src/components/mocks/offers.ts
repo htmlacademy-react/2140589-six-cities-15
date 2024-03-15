@@ -17,7 +17,7 @@ export const offers: OfferCardType[] = [
       'https://15.design.htmlacademy.pro/static/hotel/11.jpg',
     ],
     'city': {
-      'name': 'Amsterdam',
+      'name': 'Paris',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -25,9 +25,9 @@ export const offers: OfferCardType[] = [
       }
     },
     'location': {
-      'latitude': 52.3909553943508,
-      'longitude': 4.85309666406198,
-      'zoom': 16,
+      'latitude': 48.868610000000004,
+      'longitude': 2.342499,
+      'zoom': 16
     },
     'goods': [
       'Cable TV',
@@ -71,17 +71,17 @@ export const offers: OfferCardType[] = [
       'https://15.design.htmlacademy.pro/static/hotel/18.jpg'
     ],
     'city': {
-      'name': 'Amsterdam',
+      'name': 'Paris',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
-        'zoom': 13,
+        'zoom': 13
       }
     },
     'location': {
-      'latitude': 52.3609553943508,
-      'longitude': 4.85309666406198,
-      'zoom': 16,
+      'latitude': 48.858610000000006,
+      'longitude': 2.330499,
+      'zoom': 16
     },
     'goods': [
       'Heating',
@@ -124,17 +124,17 @@ export const offers: OfferCardType[] = [
       'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
     ],
     'city': {
-      'name': 'Amsterdam',
+      'name': 'Paris',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
-        'zoom': 13,
+        'zoom': 13
       }
     },
     'location': {
-      'latitude': 52.3909553943508,
-      'longitude': 4.929309666406198,
-      'zoom': 16,
+      'latitude': 48.87561,
+      'longitude': 2.375499,
+      'zoom': 16
     },
     'goods': [
       'Wi-Fi',
@@ -172,7 +172,7 @@ export const offers: OfferCardType[] = [
       'https://15.design.htmlacademy.pro/static/hotel/6.jpg'
     ],
     'city': {
-      'name': 'Amsterdam',
+      'name': 'Paris',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -180,8 +180,8 @@ export const offers: OfferCardType[] = [
       }
     },
     'location': {
-      'latitude': 52.3809553943508,
-      'longitude': 4.939309666406198,
+      'latitude': 48.84761,
+      'longitude': 2.356499,
       'zoom': 16
     },
     'goods': [

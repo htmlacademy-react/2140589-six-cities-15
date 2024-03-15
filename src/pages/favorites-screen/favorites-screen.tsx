@@ -1,13 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
-import { OfferCardType } from '../../components/types/offer';
 import FavoritePlaceList from '../../components/favorite-place-list/favorite-place-list';
+import { useAppSelector } from '../../components/store/types';
 
-type FavoritesScreenProps = {
-  offers: OfferCardType[];
-}
 
-function FavoritesScreen({offers}: FavoritesScreenProps): JSX.Element {
+function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+  const favOffers = offers.filter((offer) => offer.isFavorite);
+
   return (
     <div className="page">
       <Helmet>
@@ -45,7 +45,7 @@ function FavoritesScreen({offers}: FavoritesScreenProps): JSX.Element {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
-            <FavoritePlaceList offers={offers}/>
+            <FavoritePlaceList offers={favOffers}/>
           </section>
         </div>
       </main>
