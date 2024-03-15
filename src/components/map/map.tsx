@@ -1,5 +1,5 @@
 import {useRef, useEffect} from 'react';
-import leaflet from 'leaflet';
+import leaflet, {layerGroup} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from './use-map';
 import { Location } from '../types/location';
@@ -17,14 +17,18 @@ function Map({city, points, variant}: MapProps) {
 
   useEffect(() => {
     if (map) {
+      const markerLayer = layerGroup().addTo(map);
       points.forEach((point) => {
         leaflet
           .marker({
             lat: point.latitude,
             lng: point.longitude,
           })
-          .addTo(map);
+          .addTo(markerLayer);
       });
+      return () => {
+        map.removeLayer(markerLayer);
+      };
     }
   }, [map, points]);
 

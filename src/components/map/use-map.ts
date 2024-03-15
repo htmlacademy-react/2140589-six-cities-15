@@ -37,7 +37,8 @@ function useMap({mapRef, city, variant}: UseMapProps) {
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+    map?.setView({lat: city.latitude, lng: city.longitude}, city.zoom);
+  }, [mapRef, city, map]);
 
   return {map, className, height};
 }
