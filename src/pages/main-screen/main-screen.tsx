@@ -7,9 +7,10 @@ import Map from '../../components/map/map';
 import CityTabs from '../../components/city-tabs/city-tabs';
 import EmptyScreen from '../empty-screen/empty-screen';
 import useMainScreen from './use-main-screen';
+import OfferSort from '../../components/offer-sort/offer-sort';
 
 function MainScreen (): JSX.Element {
-  const {activeCity, offers, offersByCity, points, center, placesAvalable} = useMainScreen();
+  const {activeCity, offersByCity, points, center, placesAvalable, sortedOffers} = useMainScreen();
 
   {
     if (offersByCity.length === 0) {
@@ -59,33 +60,8 @@ function MainScreen (): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{placesAvalable} places to stay in {activeCity}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-              Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li
-                    className="places__option places__option--active"
-                    tabIndex={0}
-                  >
-                Popular
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                Price: low to high
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                Price: high to low
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                Top rated first
-                  </li>
-                </ul>
-              </form>
-              <PlaceCardList offers={offers} variant='mainScreen'/>
+              <OfferSort />
+              <PlaceCardList offers={sortedOffers} variant='mainScreen'/>
             </section>
             <div className="cities__right-section">
               <Map city={center} points={points} variant='mainScreen'/>

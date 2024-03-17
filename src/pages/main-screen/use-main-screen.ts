@@ -1,3 +1,4 @@
+import { useSort } from '../../components/offer-sort/use-sort';
 import { useAppSelector } from '../../components/store/types';
 import { cityCenter } from '../../const';
 
@@ -8,8 +9,9 @@ function useMainScreen () {
   const points = offersByCity.map((offer) => offer.location);
   const center = cityCenter[activeCity];
   const placesAvalable = offersByCity.length;
+  const sortedOffers = useSort(offersByCity);
 
-  return {activeCity, offers, offersByCity, points, center, placesAvalable};
+  return {activeCity, offersByCity, points, center, placesAvalable, sortedOffers};
 }
 
 export default useMainScreen;
