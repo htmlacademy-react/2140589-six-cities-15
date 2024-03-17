@@ -1,5 +1,5 @@
 import { CityName, SortOptions } from '../../const';
-import { fetchOffers, setActiveCity, setSortOption } from './actions';
+import { fetchOffers, setActiveCity, setHoverOnCardId, setSortOption } from './actions';
 import { offers } from '../mocks/offers';
 import { OfferCardType } from '../types/offer';
 import { createReducer } from '@reduxjs/toolkit';
@@ -8,12 +8,14 @@ type AppState = {
   activeCity: CityName;
   offers: OfferCardType[];
   sortOption: SortOptions;
+  hoverOnCardId: string | null;
 }
 
 const initialState:AppState = {
   activeCity: CityName.Paris,
   offers: offers,
   sortOption: SortOptions.POPULAR,
+  hoverOnCardId: null,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -26,5 +28,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setSortOption, (state, action) => {
       state.sortOption = action.payload;
+    })
+    .addCase(setHoverOnCardId, (state, action) => {
+      state.hoverOnCardId = action.payload;
     });
 });
