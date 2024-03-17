@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes, CityName } from '../../const';
-import { useAppSelector } from '../store/types';
-import { useDispatch } from 'react-redux';
+import { useAppDisputch, useAppSelector } from '../store/types';
 import { setActiveCity } from '../store/actions';
 import classNames from 'classnames';
 
 
 function CityTabs (): JSX.Element {
   const activeCity = useAppSelector((state) => state.activeCity);
-  const dispatch = useDispatch();
+  const dispatch = useAppDisputch();
   const handleCityTabsClick = (city:CityName) => dispatch(setActiveCity(city));
   return (
     <div className="tabs">

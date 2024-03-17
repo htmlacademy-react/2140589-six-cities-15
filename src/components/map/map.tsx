@@ -2,18 +2,21 @@ import {useRef, useEffect} from 'react';
 import leaflet, {layerGroup} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from './use-map';
-import { Location } from '../types/location';
+import { Location, Point } from '../types/location';
 import './styles.css';
+import { useAppSelector } from '../store/types';
+import { activePin, defaultPin } from '../../const';
 
 type MapProps = {
   city: Location;
-  points: Location[];
+  points: Point[];
   variant: 'mainScreen' | 'offerScreen';
 }
 
 function Map({city, points, variant}: MapProps) {
   const mapRef = useRef(null);
   const {map, className, height} = useMap({mapRef, city, variant});
+  const hoverCardId = useAppSelector((state) => state.hoverOnCardId);
 
   useEffect(() => {
     if (map) {
@@ -24,13 +27,14 @@ function Map({city, points, variant}: MapProps) {
             lat: point.latitude,
             lng: point.longitude,
           })
+          .setIcon(point.offerId === hoverCardId ? activePin : defaultPin)
           .addTo(markerLayer);
       });
       return () => {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points]);
+  }, [map, points, hoverCardId]);
 
 
   return (
