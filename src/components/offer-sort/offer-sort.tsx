@@ -4,17 +4,19 @@ import classNames from 'classnames';
 import useOfferSort from './use-offer-sort';
 
 function OfferSort() {
-  const {currentSortOption, sortIsOpened, handleSortIsOpened, handleSortOption, handleKeyDown} = useOfferSort();
+  const {currentSortOption, sortIsOpened, handleSortIsOpened, handleSortOption, handleKeyDown, handleOutsideClick, sortRef} = useOfferSort();
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('click', handleOutsideClick);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('click', handleOutsideClick);
     };
-  },[handleKeyDown]);
+  },[handleKeyDown, handleOutsideClick]);
 
   return (
-    <form className="places__sorting" action="#" method="get">
+    <form className="places__sorting" action="#" method="get" ref={sortRef}>
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex={0} onClick={handleSortIsOpened}>
         {currentSortOption}
