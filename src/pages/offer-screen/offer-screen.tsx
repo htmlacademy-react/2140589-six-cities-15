@@ -14,10 +14,14 @@ import ReviewList from '../../components/review-list/review-list';
 import { comments } from '../../components/mocks/comments';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import { AppRoutes } from '../../const';
+import { AppRoutes, cityCenter } from '../../const';
+import { useAppSelector } from '../../components/store/types';
 
 function OfferScreen(): JSX.Element {
   const {id} = useParams();
+  const activeCity = useAppSelector((state) => state.activeCity);
+  const center = cityCenter[activeCity];
+
   const offer = offers.find((offerInfo) => offerInfo.id === id);
   if (!offer) {
     return <Navigate to='offer-not-found'/>;
@@ -26,12 +30,6 @@ function OfferScreen(): JSX.Element {
 
   const nearbyOffers = offers.filter((item) => item.id !== id);
   const nearbyPoints = nearbyOffers.map((item) => item.location);
-
-  const city = {
-    'latitude': 52.37454,
-    'longitude': 4.897976,
-    'zoom': 11
-  };
 
   return (
     <div className="page">
@@ -86,7 +84,7 @@ function OfferScreen(): JSX.Element {
               <ReviewList comments={comments}/>
             </div>
           </div>
-          <Map points={nearbyPoints} city={city} variant='offerScreen'/>
+          <Map points={nearbyPoints} city={center} variant='offerScreen'/>
         </section>
         <div className="container">
           <section className="near-places places">

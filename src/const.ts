@@ -1,4 +1,5 @@
 import { Location } from './components/types/location';
+import leaflet from 'leaflet';
 
 const AppSettings = {
   placeCardCount: 5,
@@ -63,3 +64,21 @@ export const cityCenter: Record <CityName, Location> = {
   },
 };
 
+export enum SortOptions {
+  POPULAR = 'Popular',
+  PRICE__LOW__TO__HIGH = 'Price: low to high',
+  PRICE__HIGH__TO__LOW = 'Price: high to low',
+  TOP__RATED__FIRST = 'Top rated first',
+}
+
+export const defaultPin = leaflet.icon({
+  iconUrl: 'img/pin.svg',
+  iconSize: [27,39],
+  iconAnchor: [12,20],
+});
+
+export const activePin = leaflet.icon({
+  iconUrl: 'img/pin-active.svg',
+  iconSize: [27,39],
+  iconAnchor: [12,20],
+});
