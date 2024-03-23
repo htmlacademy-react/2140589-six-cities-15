@@ -1,9 +1,10 @@
-import { CityName, SortOptions } from '../../const';
-import { setActiveCity, setHoverOnCardId, setSortOption } from './actions';
+import { AuthorizationStatus, CityName, SortOptions } from '../../const';
+import { setActiveCity, setAuthStatus, setHoverOnCardId, setSortOption } from './actions';
 
 import { createReducer } from '@reduxjs/toolkit';
-import { fetchOffersAction } from '../services/api-actions';
+import { fetchOffersAction, fetchUser, loginUser } from '../services/api-actions';
 import { OfferCardType } from '../types/offer';
+import { UserAuthData } from '../types/auth';
 
 type AppState = {
   activeCity: CityName;
@@ -11,6 +12,9 @@ type AppState = {
   sortOption: SortOptions;
   hoverOnCardId: string | null;
   status: 'idle' | 'fetching' | 'succeed' | 'failed';
+  authStatus: AuthorizationStatus;
+  userStatus: 'idle' | 'fetching' | 'succeed' | 'failed';
+  userAuthData: UserAuthData | null;
 }
 
 const initialState:AppState = {
@@ -19,6 +23,9 @@ const initialState:AppState = {
   sortOption: SortOptions.POPULAR,
   hoverOnCardId: null,
   status: 'idle',
+  authStatus: AuthorizationStatus.Unknown,
+  userStatus: 'idle',
+  userAuthData: null,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -38,5 +45,24 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setHoverOnCardId, (state, action) => {
       state.hoverOnCardId = action.payload;
+    })
+    .addCase(setAuthStatus, (state, action) => {
+      state.authStatus = action.payload;
+    })
+    .addCase(fetchUser.pending, (state) => {
+      state.userStatus = 'fetching';
+    })
+    .addCase(fetchUser.rejected, (state) => {
+      state.userStatus = 'failed';
+    })
+    .addCase(fetchUser.fulfilled, (state, action) => {
+      state.userAuthData = action.payload;
+      state.authStatus = AuthorizationStatus.Auth;
+      state.userStatus = 'succeed';
+    })
+    .addCase(loginUser.fulfilled, (state, action) => {
+      state.userAuthData = action.payload;
+      state.authStatus = AuthorizationStatus.Auth;
+      state.userStatus = 'succeed';
     });
 });

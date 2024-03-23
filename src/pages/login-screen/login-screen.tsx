@@ -1,7 +1,31 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
+import { FormEvent } from 'react';
+import { UserCredentionals } from '../../components/types/auth';
+import { useAppDisputch } from '../../components/store/types';
+import { loginUser } from '../../components/services/api-actions';
+import useAuth from '../../components/hooks/use-auth';
+import { AppRoutes } from '../../const';
+import { Navigate } from 'react-router-dom';
 
 function LoginScreen (): JSX.Element {
+  const dispatch = useAppDisputch();
+  const {isAuth} = useAuth();
+
+  {
+    if (isAuth) {
+      return <Navigate to={AppRoutes.Main} />;
+    }
+  }
+
+  const handleLoginSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    const formData = new FormData(evt.currentTarget);
+    const credentionals = Object.fromEntries(formData) as UserCredentionals;
+    dispatch(loginUser(credentionals));
+  };
+
   return (
     <div className="page page--gray page--login">
       <Helmet>
@@ -18,7 +42,7 @@ function LoginScreen (): JSX.Element {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="#" method="post">
+            <form className="login__form form" onSubmit={handleLoginSubmit}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input

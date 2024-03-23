@@ -85,4 +85,5 @@ export const activePin = leaflet.icon({
 
 export enum APIRoutes {
   Offers = '/offers',
+  Login = '/login'
 }

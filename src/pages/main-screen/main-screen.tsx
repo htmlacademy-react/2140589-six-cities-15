@@ -1,14 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import { Link } from 'react-router-dom';
-import { AppRoutes } from '../../const';
 import Map from '../../components/map/map';
 import CityTabs from '../../components/city-tabs/city-tabs';
 import EmptyScreen from '../empty-screen/empty-screen';
 import useMainScreen from './use-main-screen';
 import OfferSort from '../../components/offer-sort/offer-sort';
 import OfferSpinner from '../../components/offer-spinner/offer-spinner';
+import UserNavigation from '../../components/user-navigation/user-navigation';
 
 function MainScreen (): JSX.Element {
   const {activeCity, offersByCity, points, center, placesAvalable, sortedOffers, status} = useMainScreen();
@@ -29,27 +28,7 @@ function MainScreen (): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <Logo isActive/>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <Link
-                    className="header__nav-link header__nav-link--profile"
-                    to={AppRoutes.Favorites}
-                  >
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">
-                  Oliver.conner@gmail.com
-                    </span>
-                    <span className="header__favorite-count">3</span>
-                  </Link>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <UserNavigation />
           </div>
         </div>
       </header>
@@ -58,7 +37,7 @@ function MainScreen (): JSX.Element {
         <CityTabs />
         <div className="cities">
           {
-            status === 'fetching' ? (<OfferSpinner />) : (
+            status === 'fetching' ? (<OfferSpinner variant='pageScreen'/>) : (
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
