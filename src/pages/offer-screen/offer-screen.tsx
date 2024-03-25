@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
-import { Navigate, useParams } from 'react-router-dom';
-import { offers } from '../../components/mocks/offers';
+import { Navigate } from 'react-router-dom';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInsideList from '../../components/offer-inside/offer-inside';
 import OfferFeatures from '../../components/offer-features/offer-features';
@@ -11,26 +10,32 @@ import CardRating from '../../components/card-rating/card-rating';
 import PlacePrice from '../../components/place-price/place-price';
 import BookmarkButton from '../../components/bookmark-button/bookmark-button';
 import ReviewList from '../../components/review-list/review-list';
-import { comments } from '../../components/mocks/comments';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import { cityCenter } from '../../const';
-import { useAppSelector } from '../../components/store/types';
 import UserNavigation from '../../components/user-navigation/user-navigation';
+import { useEffect } from 'react';
+import { fetchPerOffer } from '../../components/services/api-actions';
+import OfferSpinner from '../../components/offer-spinner/offer-spinner';
+import useOfferScreen from './use-offer-screen';
 
 function OfferScreen(): JSX.Element {
-  const {id} = useParams();
-  const activeCity = useAppSelector((state) => state.activeCity);
-  const center = cityCenter[activeCity];
+  const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();
 
-  const offer = offers.find((offerInfo) => offerInfo.id === id);
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchPerOffer(id));
+    }
+  },[dispatch,id]);
+
+  if(offerLoaded === 'fetching' || offerLoaded === 'idle') {
+    return <OfferSpinner variant='pageScreen'/>;
+  }
+
   if (!offer) {
     return <Navigate to='offer-not-found'/>;
   }
-  const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;
 
-  const nearbyOffers = offers.filter((item) => item.id !== id);
-  const nearbyPoints = nearbyOffers.map((item) => item.location);
+  const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;
 
   return (
     <div className="page">

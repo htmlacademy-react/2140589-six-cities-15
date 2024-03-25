@@ -1,10 +1,11 @@
 import ReviewsRatingFormStars from '../reviews-rating-form-stars/reviews-rating-form-stars';
 import useCommentForm from './use-comment-form';
+import './styles.css';
 
 function CommentForm () {
-  const {comment, rating, handleCommentChange, handleRatingChange, isSubmitDisabled} = useCommentForm();
+  const {comment, rating, handleCommentChange, handleRatingChange, isSubmitDisabled, handleFormSubmit, formRef} = useCommentForm();
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit} ref={formRef}>
       <label className="reviews__label form__label" htmlFor="review">
                     Your review
       </label>

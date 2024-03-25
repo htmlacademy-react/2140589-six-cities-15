@@ -2,9 +2,10 @@ import { AuthorizationStatus, CityName, SortOptions } from '../../const';
 import { setActiveCity, setAuthStatus, setHoverOnCardId, setSortOption } from './actions';
 
 import { createReducer } from '@reduxjs/toolkit';
-import { fetchOffersAction, fetchUser, loginUser } from '../services/api-actions';
+import { fetchOffersAction, fetchPerOffer, fetchUser, loginUser, postComment } from '../services/api-actions';
 import { OfferCardType } from '../types/offer';
 import { UserAuthData } from '../types/auth';
+import { Comments } from '../types/comments';
 
 type AppState = {
   activeCity: CityName;
@@ -15,6 +16,10 @@ type AppState = {
   authStatus: AuthorizationStatus;
   userStatus: 'idle' | 'fetching' | 'succeed' | 'failed';
   userAuthData: UserAuthData | null;
+  offerDetail: OfferCardType | null;
+  offerDetailFetched: 'idle' | 'fetching' | 'succeed' | 'failed';
+  comments: Comments[];
+  nearbyOffers: OfferCardType[];
 }
 
 const initialState:AppState = {
@@ -26,6 +31,10 @@ const initialState:AppState = {
   authStatus: AuthorizationStatus.Unknown,
   userStatus: 'idle',
   userAuthData: null,
+  offerDetail: null,
+  offerDetailFetched: 'idle',
+  comments: [],
+  nearbyOffers: [],
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -39,6 +48,21 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(fetchOffersAction.fulfilled, (state, action) => {
       state.offers = action.payload;
       state.status = 'succeed';
+    })
+    .addCase(fetchPerOffer.rejected, (state) => {
+      state.offerDetailFetched = 'failed';
+    })
+    .addCase(fetchPerOffer.pending, (state) => {
+      state.offerDetailFetched = 'fetching';
+    })
+    .addCase(fetchPerOffer.fulfilled, (state, action) => {
+      state.offerDetail = action.payload.offerDetail;
+      state.comments = action.payload.comments;
+      state.nearbyOffers = action.payload.nearbyOffers;
+      state.offerDetailFetched = 'succeed';
+    })
+    .addCase(postComment.fulfilled, (state, action) => {
+      state.comments.push(action.payload);
     })
     .addCase(setSortOption, (state, action) => {
       state.sortOption = action.payload;
