@@ -1,12 +1,14 @@
 import CommentForm from '../comment-form/comment-form';
+import useAuth from '../hooks/use-auth';
 import ReviewItem from '../review-item/review-item';
-import { Comment } from '../types/comment';
+import { Comments } from '../types/comments';
 
 type ReviewListProps = {
-  comments: Comment[];
+  comments: Comments[];
 }
 
 function ReviewList ({comments}: ReviewListProps): JSX.Element {
+  const {isAuth} = useAuth();
   return(
     <section className="offer__reviews reviews">
       <h2 className="reviews__title">
@@ -17,7 +19,9 @@ function ReviewList ({comments}: ReviewListProps): JSX.Element {
           comments.map((review) => <ReviewItem review={review} key={review.id}/>)
         }
       </ul>
-      <CommentForm />
+      {
+        isAuth && <CommentForm />
+      }
     </section>
   );
 }

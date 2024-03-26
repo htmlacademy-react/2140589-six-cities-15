@@ -1,6 +1,6 @@
 import { formatDate } from '../../const';
 import CardRating from '../card-rating/card-rating';
-import { Comment } from '../types/comment';
+import { Comment } from '../types/comments';
 import UserStatus from '../user-status/user-status';
 
 type ReviewItemProps = {
