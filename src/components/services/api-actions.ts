@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { AxiosError, AxiosInstance } from 'axios';
 import { OfferCardType } from '../types/offer';
 import { APIRoutes } from '../../const';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -7,6 +7,27 @@ import { saveToken } from './token';
 import { toast } from 'react-toastify';
 import { Comments, NewComment } from '../types/comments';
 import { RootState } from '../store';
+
+type MessageLoginErrorMessage = {
+  errorType: string;
+  message: string;
+  details: [{
+    property: string;
+    value: string;
+    messages: string[];
+  }];
+}
+
+function getLoginUserErrorMessage (error: unknown) {
+  if (error instanceof AxiosError) {
+    const errorMessage = error.response?.data as MessageLoginErrorMessage;
+    const result = errorMessage.details.reduce((acc: string[], current) => {
+      current.messages.forEach((item) => acc.push(item));
+      return acc;
+    }, []);
+    return result;
+  }
+}
 
 export const fetchOffersAction = createAsyncThunk<OfferCardType[], undefined, {
   extra: AxiosInstance;
@@ -40,17 +61,7 @@ export const loginUser = createAsyncThunk<UserAuthData, UserCredentionals, {
       saveToken(data.token);
       return data;
     } catch (error: unknown) {
-      const firstError: unknown = error.response.data.details[0].messages[0];
-      const secondError: unknown = error.response.data.details[0].messages[1];
-      const thirdError: unknown = error.response.data.details[0].messages[2];
-      const fourthError: unknown = error.response.data.details[1].messages[0];
-      const fifthError: unknown = error.response.data.details[1].messages[1];
-      toast.error(firstError);
-      toast.error(secondError);
-      toast.error(thirdError);
-      toast.error(fourthError);
-      toast.error(fifthError);
-
+      toast.error(getLoginUserErrorMessage(error)?.join());
       throw (error);
     }
   },
@@ -76,8 +87,11 @@ export const postComment = createAsyncThunk<Comments, NewComment, {
         const offerId = state.offerDetail?.id;
         const { data } = await api.post<Comments>(`${APIRoutes.Comments}/${offerId}`, newComment);
         return data;
-      } catch (error: unknown) {
-        toast.error(error.response.data.message);
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          const errorMessage = error.message;
+          toast.error(errorMessage);
+        }
         throw error;
       }
     });
