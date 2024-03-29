@@ -1,0 +1,14 @@
+.cities__image-wrapper img {
+  height: 200px;
+  width: 260px;
+}
+
+.favorites__image-wrapper img {
+  height: 110px;
+  width: 150px;
+}
+
+.near-places__image-wrapper img {
+  height: 200px;
+  width: 260px;
+}
