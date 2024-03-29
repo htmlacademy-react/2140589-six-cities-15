@@ -6,6 +6,7 @@ import { Location, Point } from '../types/location';
 import './styles.css';
 import { useAppSelector } from '../store/types';
 import { activePin, defaultPin } from '../../const';
+import { getHoverOnCardId } from '../store/app-data/selectors';
 
 type MapProps = {
   city: Location;
@@ -16,7 +17,7 @@ type MapProps = {
 function Map({city, points, variant}: MapProps) {
   const mapRef = useRef(null);
   const {map, className, height} = useMap({mapRef, city, variant});
-  const hoverCardId = useAppSelector((state) => state.hoverOnCardId);
+  const hoverCardId = useAppSelector(getHoverOnCardId);
 
   useEffect(() => {
     if (map) {

@@ -1,10 +1,11 @@
 import { SortOptions } from '../../const';
+import { getSortOption } from '../store/app-data/selectors';
 import { useAppSelector } from '../store/types';
 import { OfferCardType } from '../types/offer';
 
 
 export function useSort (offers: OfferCardType[]) {
-  const currentSorting = useAppSelector((state) => state.sortOption);
+  const currentSorting = useAppSelector(getSortOption);
 
   switch(currentSorting){
     case SortOptions.POPULAR:

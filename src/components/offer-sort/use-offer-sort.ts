@@ -1,16 +1,17 @@
 import { useRef, useState } from 'react';
 import { SortOptions } from '../../const';
-import { setSortOption } from '../store/actions';
 import { useAppDisputch, useAppSelector } from '../store/types';
+import { getSortOption } from '../store/app-data/selectors';
+import { appData } from '../store/app-data/slice';
 
 function useOfferSort () {
   const sortRef = useRef<HTMLFormElement | null>(null);
-  const currentSortOption = useAppSelector((state) => state.sortOption);
+  const currentSortOption = useAppSelector(getSortOption);
   const [sortIsOpened, setSortIsOpened] = useState(false);
   const handleSortIsOpened = () => setSortIsOpened(!sortIsOpened);
   const dispatch = useAppDisputch();
   const handleSortOption = (option:SortOptions) => {
-    dispatch(setSortOption(option)); setSortIsOpened(false);
+    dispatch(appData.actions.setSortOption(option)); setSortIsOpened(false);
   };
 
   const handleOutsideClick = (evt: MouseEvent) => {

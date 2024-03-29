@@ -11,7 +11,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { useAppSelector } from '../store/types';
 
 function App(): JSX.Element {
-  const userAuth = useAppSelector((state) => state.authStatus);
+  const userAuth = useAppSelector((state) => state.authData.authStatus);
   return (
     <HelmetProvider>
       <BrowserRouter>

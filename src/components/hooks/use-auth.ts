@@ -1,8 +1,9 @@
 import { AuthorizationStatus } from '../../const';
+import { getAuthStatus } from '../store/auth-data/selectors';
 import { useAppSelector } from '../store/types';
 
 function useAuth() {
-  const authStatus = useAppSelector((state) => state.authStatus);
+  const authStatus = useAppSelector(getAuthStatus);
   return {isAuth: authStatus === AuthorizationStatus.Auth};
 }
 

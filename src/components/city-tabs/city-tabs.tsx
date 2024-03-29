@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes, CityName } from '../../const';
 import { useAppDisputch, useAppSelector } from '../store/types';
-import { setActiveCity } from '../store/actions';
 import classNames from 'classnames';
+import { getActiveCity } from '../store/app-data/selectors';
+import { appData } from '../store/app-data/slice';
 
 
 function CityTabs (): JSX.Element {
-  const activeCity = useAppSelector((state) => state.activeCity);
+  const activeCity = useAppSelector(getActiveCity);
   const dispatch = useAppDisputch();
-  const handleCityTabsClick = (city:CityName) => dispatch(setActiveCity(city));
+  const handleCityTabsClick = (city:CityName) => dispatch(appData.actions.setActiveCity(city));
   return (
     <div className="tabs">
       <section className="locations container">
