@@ -3,10 +3,11 @@ import Logo from '../../components/logo/logo';
 import FavoritePlaceList from '../../components/favorite-place-list/favorite-place-list';
 import { useAppSelector } from '../../components/store/types';
 import UserNavigation from '../../components/user-navigation/user-navigation';
+import { getOffers } from '../../components/store/offer-data/selectors';
 
 
 function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffers);
   const favOffers = offers.filter((offer) => offer.isFavorite);
 
   return (

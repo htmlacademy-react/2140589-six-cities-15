@@ -3,11 +3,12 @@ import { AppRoutes } from '../../const';
 import useAuth from '../hooks/use-auth';
 import { useAppSelector } from '../store/types';
 import OfferSpinner from '../offer-spinner/offer-spinner';
+import { getUserAuthData, getUserStatus } from '../store/auth-data/selectors';
 
 function UserNavigation() {
   const {isAuth} = useAuth();
-  const user = useAppSelector((state) => state.userAuthData);
-  const userLoader = useAppSelector((state) => state.userStatus);
+  const user = useAppSelector(getUserAuthData);
+  const userLoader = useAppSelector(getUserStatus);
 
   return (
     <nav className="header__nav">

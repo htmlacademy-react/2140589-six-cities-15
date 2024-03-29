@@ -84,7 +84,7 @@ export const postComment = createAsyncThunk<Comments, NewComment, {
     async (newComment, { extra: api, getState }) => {
       try {
         const state = getState();
-        const offerId = state.offerDetail?.id;
+        const offerId = state.offerData.offerDetail?.id;
         const { data } = await api.post<Comments>(`${APIRoutes.Comments}/${offerId}`, newComment);
         return data;
       } catch (error) {
