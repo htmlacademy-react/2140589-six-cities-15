@@ -7,6 +7,8 @@ import usePlaceCard from './use-place-card';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import { screenVariant } from '../types/screen-varinat';
 import './styles.css';
+import { useAppDisputch } from '../store/types';
+import { toggleFavoriteOffers } from '../services/api-actions';
 
 type PlaceCardProps = {
   offer: OfferCardType;
@@ -17,6 +19,11 @@ type PlaceCardProps = {
 function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element {
   const {isPremium ,previewImage, title, price, type, rating, id, isFavorite} = offer;
   const {url, handleOnMouseEnter, handleOnMouseLeve, articleClassName, imgWrapperClassName, infoWrapperClassName} = usePlaceCard({id, variant, onCardHover});
+  const dispatch = useAppDisputch();
+  const handleFavoriteButton = () => {
+    dispatch(toggleFavoriteOffers(offer));
+  };
+
   return (
     <article className={articleClassName}>
       <PremiumLabel isPremium={isPremium} variant='placeCard'/>
@@ -34,7 +41,7 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
       <div className={infoWrapperClassName}>
         <div className="place-card__price-wrapper">
           <PlacePrice price={price} variant='placeCard'/>
-          <BookmarkButton isFavorite={isFavorite} variant='placeCard'/>
+          <BookmarkButton isFavorite={isFavorite} variant='placeCard' onButtonClick={handleFavoriteButton}/>
         </div>
         <CardRating rating={rating} variant='placeCard'/>
         <h2 className="place-card__name">

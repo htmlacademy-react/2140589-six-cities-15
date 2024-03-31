@@ -39,6 +39,17 @@ export const fetchOffersAction = createAsyncThunk<OfferCardType[], undefined, {
   },
 );
 
+export const fetchFavoriteOffers = createAsyncThunk<OfferCardType[], undefined, {
+  extra: AxiosInstance;
+}>(
+  'data/fetchFavoriteOffers',
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<OfferCardType[]>(APIRoutes.Favorite);
+    return data;
+  },
+);
+
+
 export const fetchPerOffer = createAsyncThunk<{offerDetail: OfferCardType; comments: Comments[]; nearbyOffers: OfferCardType[]}, string, {
   extra: AxiosInstance;
 }>(
@@ -55,9 +66,10 @@ export const loginUser = createAsyncThunk<UserAuthData, UserCredentionals, {
   extra: AxiosInstance;
 }>(
   'data/loginUser',
-  async (userCredentionals, { extra: api }) => {
+  async (userCredentionals, { extra: api, dispatch }) => {
     try {
       const { data } = await api.post<UserAuthData>(APIRoutes.Login, userCredentionals);
+      dispatch(fetchFavoriteOffers());
       saveToken(data.token);
       return data;
     } catch (error: unknown) {
@@ -71,8 +83,9 @@ export const fetchUser = createAsyncThunk<UserAuthData, undefined, {
   extra: AxiosInstance;
 }>(
   'data/fetchUser',
-  async (_arg, { extra: api }) => {
+  async (_arg, { extra: api, dispatch }) => {
     const { data } = await api.get<UserAuthData>(APIRoutes.Login);
+    dispatch(fetchFavoriteOffers());
     saveToken(data.token);
     return data;
   });
@@ -95,3 +108,14 @@ export const postComment = createAsyncThunk<Comments, NewComment, {
         throw error;
       }
     });
+
+export const toggleFavoriteOffers = createAsyncThunk<OfferCardType, OfferCardType, {
+      extra: AxiosInstance;
+    }>(
+      'data/toggleFavoriteOffers',
+      async (offer, { extra: api }) => {
+        const changeFavoriteStatus = offer.isFavorite ? 0 : 1;
+        const { data } = await api.post<OfferCardType>(`${APIRoutes.Favorite}/${offer.id}/${changeFavoriteStatus}`);
+        return data;
+      },
+    );

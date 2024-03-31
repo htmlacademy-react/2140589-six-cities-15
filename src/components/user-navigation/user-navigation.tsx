@@ -4,11 +4,13 @@ import useAuth from '../hooks/use-auth';
 import { useAppSelector } from '../store/types';
 import OfferSpinner from '../offer-spinner/offer-spinner';
 import { getUserAuthData, getUserStatus } from '../store/auth-data/selectors';
+import { getFavoriteOffers } from '../store/offer-data/selectors';
 
 function UserNavigation() {
   const {isAuth} = useAuth();
   const user = useAppSelector(getUserAuthData);
   const userLoader = useAppSelector(getUserStatus);
+  const favoriteOffers = useAppSelector(getFavoriteOffers);
 
   return (
     <nav className="header__nav">
@@ -28,7 +30,7 @@ function UserNavigation() {
                 <span className="header__user-name user__name">
                   {user.email}
                 </span>
-                <span className="header__favorite-count">3</span>
+                <span className="header__favorite-count">{favoriteOffers.length}</span>
               </Link>
             </li>
             <li className="header__nav-item">

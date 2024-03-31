@@ -1,47 +1,34 @@
 import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
 import FavoritePlaceList from '../../components/favorite-place-list/favorite-place-list';
-import { useAppSelector } from '../../components/store/types';
-import UserNavigation from '../../components/user-navigation/user-navigation';
-import { getOffers } from '../../components/store/offer-data/selectors';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import useFavoritesScreen from './use-favorites-screen';
 
 
 function FavoritesScreen(): JSX.Element {
-  const offers = useAppSelector(getOffers);
-  const favOffers = offers.filter((offer) => offer.isFavorite);
-
+  const {offers, favEmptyScreen, pageClass, mainClass} = useFavoritesScreen();
   return (
-    <div className="page">
+    <div className={pageClass}>
       <Helmet>
         <title>6 cities: favorites</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <Logo />
-            <UserNavigation />
-          </div>
-        </div>
-      </header>
-      <main className="page__main page__main--favorites">
+      <Header />
+      <main className={mainClass}>
         <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <FavoritePlaceList offers={favOffers}/>
-          </section>
+          {
+            offers.length === 0 ?
+              (favEmptyScreen)
+              :
+              (
+                <section className="favorites">
+                  <h1 className="favorites__title">Saved listing</h1>
+                  <FavoritePlaceList offers={offers} />
+                </section>
+              )
+          }
         </div>
       </main>
-      <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img
-            className="footer__logo"
-            src="img/logo.svg"
-            alt="6 cities logo"
-            width={64}
-            height={33}
-          />
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }

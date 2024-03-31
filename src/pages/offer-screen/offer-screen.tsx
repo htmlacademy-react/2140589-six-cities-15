@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
 import { Navigate } from 'react-router-dom';
 import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import OfferInsideList from '../../components/offer-inside/offer-inside';
@@ -12,11 +11,12 @@ import BookmarkButton from '../../components/bookmark-button/bookmark-button';
 import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import UserNavigation from '../../components/user-navigation/user-navigation';
 import { useEffect } from 'react';
-import { fetchPerOffer } from '../../components/services/api-actions';
+import { fetchPerOffer, toggleFavoriteOffers } from '../../components/services/api-actions';
 import OfferSpinner from '../../components/offer-spinner/offer-spinner';
 import useOfferScreen from './use-offer-screen';
+import Header from '../../components/header/header';
+import { appData } from '../../components/store/app-data/slice';
 
 function OfferScreen(): JSX.Element {
   const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();
@@ -24,7 +24,11 @@ function OfferScreen(): JSX.Element {
   useEffect(() => {
     if (id) {
       dispatch(fetchPerOffer(id));
+      dispatch(appData.actions.setHoverOnCardId(id));
     }
+    return () => {
+      dispatch(appData.actions.setHoverOnCardId(null));
+    };
   },[dispatch,id]);
 
   if(offerLoaded === 'fetching' || offerLoaded === 'idle') {
@@ -36,20 +40,16 @@ function OfferScreen(): JSX.Element {
   }
 
   const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;
+  const handleFavoriteButton = () => {
+    dispatch(toggleFavoriteOffers(offer));
+  };
 
   return (
     <div className="page">
       <Helmet>
         <title>6 cities: {title}</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <Logo />
-            <UserNavigation />
-          </div>
-        </div>
-      </header>
+      <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery images={images} title={title}/>
@@ -60,7 +60,7 @@ function OfferScreen(): JSX.Element {
                 <h1 className="offer__name">
                   {title}
                 </h1>
-                <BookmarkButton isFavorite={isFavorite} variant='offerPage'/>
+                <BookmarkButton isFavorite={isFavorite} variant='offerPage' onButtonClick={handleFavoriteButton}/>
               </div>
               <CardRating rating={rating} variant='offerPage'/>
               <OfferFeatures type={type} bedrooms={bedrooms} maxAdults={maxAdults}/>

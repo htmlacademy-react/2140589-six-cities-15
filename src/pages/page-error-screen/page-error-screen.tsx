@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
-import UserNavigation from '../../components/user-navigation/user-navigation';
+import Header from '../../components/header/header';
 
 function PageErrorScreen(): JSX.Element {
   return (
@@ -8,14 +7,7 @@ function PageErrorScreen(): JSX.Element {
       <Helmet>
         <title>6 cities: page not found</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <Logo />
-            <UserNavigation />
-          </div>
-        </div>
-      </header>
+      <Header />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
         <div className="cities">

@@ -3,6 +3,7 @@ import { useAppSelector, useAppDisputch } from '../../components/store/types';
 import { cityCenter } from '../../const';
 import { getActiveCity } from '../../components/store/app-data/selectors';
 import { getComments, getNearbyOffers, getOfferDetail, getOfferDetailFetched } from '../../components/store/offer-data/selectors';
+import { Point } from '../../components/types/location';
 
 function useOfferScreen () {
   const {id} = useParams();
@@ -12,9 +13,12 @@ function useOfferScreen () {
   const offerLoaded = useAppSelector(getOfferDetailFetched);
 
   const offer = useAppSelector(getOfferDetail);
-  const comments = useAppSelector(getComments).slice(0, 10);
-  const nearbyOffers = useAppSelector(getNearbyOffers).slice(0, 3);
-  const nearbyPoints = nearbyOffers.map((item) => item.location);
+  const comments = useAppSelector(getComments);
+  const nearbyOffers = useAppSelector(getNearbyOffers);
+  const nearbyPoints: Point[] = nearbyOffers.map(({id: offerId, location}) => ({...location, offerId}));
+  if(offer) {
+    nearbyPoints.push({...offer.location, offerId: offer.id});
+  }
 
   return {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints };
 }

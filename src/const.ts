@@ -88,4 +88,8 @@ export enum APIRoutes {
   Login = '/login',
   Offer = '/offer',
   Comments = '/comments',
+  Favorite = '/favorite',
 }
+
+export const MAX_COMMENTS_LENGTH = 10;
+export const MAX_NEARBY_CITIES = 3;
