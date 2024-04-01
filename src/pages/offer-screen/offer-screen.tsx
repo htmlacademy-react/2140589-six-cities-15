@@ -44,8 +44,9 @@ function OfferScreen(): JSX.Element {
   const handleFavoriteButton = () => {
     if (isAuth) {
       dispatch(toggleFavoriteOffers(offer));
+    } else {
+      navigateToLoginPage(AppRoutes.Login);
     }
-    navigateToLoginPage(AppRoutes.Login);
   };
 
   return (

@@ -24,8 +24,9 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
   const handleFavoriteButton = () => {
     if (isAuth) {
       dispatch(toggleFavoriteOffers(offer));
+    } else {
+      navigateToLoginPage(AppRoutes.Login);
     }
-    navigateToLoginPage(AppRoutes.Login);
   };
 
   return (
