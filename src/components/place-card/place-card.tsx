@@ -9,6 +9,7 @@ import { screenVariant } from '../types/screen-varinat';
 import './styles.css';
 import { useAppDisputch } from '../store/types';
 import { toggleFavoriteOffers } from '../services/api-actions';
+import { AppRoutes } from '../../const';
 
 type PlaceCardProps = {
   offer: OfferCardType;
@@ -18,10 +19,13 @@ type PlaceCardProps = {
 
 function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element {
   const {isPremium ,previewImage, title, price, type, rating, id, isFavorite} = offer;
-  const {url, handleOnMouseEnter, handleOnMouseLeve, articleClassName, imgWrapperClassName, infoWrapperClassName} = usePlaceCard({id, variant, onCardHover});
+  const {url, handleOnMouseEnter, handleOnMouseLeve, articleClassName, imgWrapperClassName, infoWrapperClassName, isAuth, navigateToLoginPage} = usePlaceCard({id, variant, onCardHover});
   const dispatch = useAppDisputch();
   const handleFavoriteButton = () => {
-    dispatch(toggleFavoriteOffers(offer));
+    if (isAuth) {
+      dispatch(toggleFavoriteOffers(offer));
+    }
+    navigateToLoginPage(AppRoutes.Login);
   };
 
   return (

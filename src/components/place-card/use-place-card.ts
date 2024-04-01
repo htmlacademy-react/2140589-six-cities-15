@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import { AppRoutes } from '../../const';
-import { generatePath } from 'react-router-dom';
+import { generatePath, useNavigate } from 'react-router-dom';
 import { screenVariant } from '../types/screen-varinat';
+import useAuth from '../hooks/use-auth';
 
 type UsePlaceCardProps = {
   variant: screenVariant;
@@ -35,7 +36,10 @@ function usePlaceCard ({variant, id, onCardHover}: UsePlaceCardProps) {
 
   const infoWrapperClassName = classNames(variant === 'favoriteScreen' ? 'favorites__card-info' : null, 'place-card__info');
 
-  return { url, handleOnMouseEnter, handleOnMouseLeve, articleClassName, imgWrapperClassName, infoWrapperClassName};
+  const {isAuth} = useAuth();
+  const navigateToLoginPage = useNavigate();
+
+  return { url, handleOnMouseEnter, handleOnMouseLeve, articleClassName, imgWrapperClassName, infoWrapperClassName, isAuth, navigateToLoginPage};
 }
 
 export default usePlaceCard;

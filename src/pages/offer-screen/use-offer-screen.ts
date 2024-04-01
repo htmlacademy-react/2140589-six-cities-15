@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector, useAppDisputch } from '../../components/store/types';
 import { cityCenter } from '../../const';
 import { getActiveCity } from '../../components/store/app-data/selectors';
 import { getComments, getNearbyOffers, getOfferDetail, getOfferDetailFetched } from '../../components/store/offer-data/selectors';
 import { Point } from '../../components/types/location';
+import useAuth from '../../components/hooks/use-auth';
 
 function useOfferScreen () {
   const {id} = useParams();
@@ -20,7 +21,10 @@ function useOfferScreen () {
     nearbyPoints.push({...offer.location, offerId: offer.id});
   }
 
-  return {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints };
+  const {isAuth} = useAuth();
+  const navigateToLoginPage = useNavigate();
+
+  return {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints, isAuth, navigateToLoginPage };
 }
 
 export default useOfferScreen;
