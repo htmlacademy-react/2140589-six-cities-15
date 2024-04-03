@@ -7,13 +7,13 @@ type BookmarkButtonProp = {
 }
 
 function BookmarkButton ({isFavorite, variant, onButtonClick}: BookmarkButtonProp) {
-  const {height, width, bookmarkButtonVariant, bookmarkButton, bookmarkLocation} = useBookmarkButton({variant, isFavorite});
+  const {height, width, bookmarkButtonVariant, bookmarkButton, bookmarkLocation, handleClick} = useBookmarkButton({variant, isFavorite, onButtonClick});
 
   return (
     <button
       className={bookmarkButton}
       type="button"
-      onClick={onButtonClick}
+      onClick={handleClick}
     >
       <svg
         className={`${bookmarkButtonVariant}__bookmark-icon`}

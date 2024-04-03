@@ -17,10 +17,9 @@ import OfferSpinner from '../../components/offer-spinner/offer-spinner';
 import useOfferScreen from './use-offer-screen';
 import Header from '../../components/header/header';
 import { appData } from '../../components/store/app-data/slice';
-import { AppRoutes } from '../../const';
 
 function OfferScreen(): JSX.Element {
-  const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints, isAuth, navigateToLoginPage } = useOfferScreen();
+  const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();
 
   useEffect(() => {
     if (id) {
@@ -42,11 +41,7 @@ function OfferScreen(): JSX.Element {
 
   const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;
   const handleFavoriteButton = () => {
-    if (isAuth) {
-      dispatch(toggleFavoriteOffers(offer));
-    } else {
-      navigateToLoginPage(AppRoutes.Login);
-    }
+    dispatch(toggleFavoriteOffers(offer));
   };
 
   return (
