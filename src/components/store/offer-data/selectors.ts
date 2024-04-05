@@ -5,7 +5,7 @@ import { RootState } from '../../types/utils';
 type OfferState = Pick<RootState, 'offerData'>;
 
 export const getComments = createSelector((state: OfferState) => state.offerData.comments,
-  (comments) => comments.slice(0, MAX_COMMENTS_LENGTH)
+  (comments) => comments.toSorted((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, MAX_COMMENTS_LENGTH)
 );
 export const getNearbyOffers = createSelector((state: OfferState) => state.offerData.nearbyOffers,
   (nearbyOffers) => nearbyOffers.slice(0, MAX_NEARBY_CITIES)
