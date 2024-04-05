@@ -1,16 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../const';
-import useAuth from '../hooks/use-auth';
-import { useAppSelector } from '../store/types';
 import OfferSpinner from '../offer-spinner/offer-spinner';
-import { getUserAuthData, getUserStatus } from '../store/auth-data/selectors';
-import { getFavoriteOffers } from '../store/offer-data/selectors';
+import './styles.css';
+import useUserNavigation from './use-user-navigation';
 
 function UserNavigation() {
-  const {isAuth} = useAuth();
-  const user = useAppSelector(getUserAuthData);
-  const userLoader = useAppSelector(getUserStatus);
-  const favoriteOffers = useAppSelector(getFavoriteOffers);
+  const { isAuth, user, userLoader, favoriteOffers, handleLogOutButton } = useUserNavigation();
 
   return (
     <nav className="header__nav">
@@ -34,9 +29,9 @@ function UserNavigation() {
               </Link>
             </li>
             <li className="header__nav-item">
-              <a className="header__nav-link" href="#">
+              <button className="header__nav-link" onClick={handleLogOutButton}>
                 <span className="header__signout">Sign out</span>
-              </a>
+              </button>
             </li>
           </ul>
           :

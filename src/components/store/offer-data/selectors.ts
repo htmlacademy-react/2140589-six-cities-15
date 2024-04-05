@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '..';
 import { MAX_COMMENTS_LENGTH, MAX_NEARBY_CITIES } from '../../../const';
+import { RootState } from '../../types/utils';
 
 type OfferState = Pick<RootState, 'offerData'>;
 

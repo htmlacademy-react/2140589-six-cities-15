@@ -17,13 +17,14 @@ import OfferSpinner from '../../components/offer-spinner/offer-spinner';
 import useOfferScreen from './use-offer-screen';
 import Header from '../../components/header/header';
 import { appData } from '../../components/store/app-data/slice';
+import { AppRoutes } from '../../const';
 
 function OfferScreen(): JSX.Element {
   const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchPerOffer(id));
+      dispatch(fetchPerOffer(id)).unwrap().catch();
       dispatch(appData.actions.setHoverOnCardId(id));
     }
     return () => {
@@ -36,7 +37,7 @@ function OfferScreen(): JSX.Element {
   }
 
   if (!offer) {
-    return <Navigate to='offer-not-found'/>;
+    return <Navigate to={AppRoutes.Page_Error}/>;
   }
 
   const {rating, title, isPremium, type, price, images, bedrooms, maxAdults, goods, description, host, isFavorite} = offer;

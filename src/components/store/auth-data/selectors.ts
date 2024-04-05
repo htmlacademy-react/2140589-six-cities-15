@@ -1,4 +1,5 @@
-import { RootState } from '..';
+import { RootState } from '../../types/utils';
+
 
 type AuthState = Pick<RootState, 'authData'>
 

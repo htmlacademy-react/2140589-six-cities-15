@@ -1,11 +1,21 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../const';
+import './styles.css';
 
-function PageErrorScreen(): JSX.Element {
+function PageNotFoundScreen(): JSX.Element {
+  const errorCode = '404';
+  const errorMessage = 'Страница не найдена';
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(AppRoutes.Main);
+  };
   return (
     <div className="page page--gray page--main">
       <Helmet>
-        <title>6 cities: page not found</title>
+        <title>6 cities: page error</title>
       </Helmet>
       <Header />
       <main className="page__main page__main--index page__main--index-empty">
@@ -14,10 +24,13 @@ function PageErrorScreen(): JSX.Element {
           <div className="cities__places-container cities__places-container--empty container">
             <section className="cities__no-places">
               <div className="cities__status-wrapper tabs__content">
-                <b className="cities__status">Ошибка 404</b>
+                <b className="cities__status">Ошибка {errorCode}</b>
                 <p className="cities__status-description">
-                  Страница не найдена.
+                  {errorMessage}
                 </p>
+                <button className='cities__return-button' onClick={handleClick}>
+                  Вернуться на главную страницу
+                </button>
               </div>
             </section>
             <div className="cities__right-section" />
@@ -28,4 +41,4 @@ function PageErrorScreen(): JSX.Element {
   );
 }
 
-export default PageErrorScreen;
+export default PageNotFoundScreen;

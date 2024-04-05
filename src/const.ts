@@ -10,6 +10,8 @@ enum AppRoutes {
   Login = '/login',
   Favorites = '/favorites',
   Offer = '/offer/:id',
+  Page_Error = '/page-error',
+  Server_Error = '/server-error',
 }
 
 enum AuthorizationStatus {
@@ -86,10 +88,18 @@ export const activePin = leaflet.icon({
 export enum APIRoutes {
   Offers = '/offers',
   Login = '/login',
+  Logout = '/logout',
   Offer = '/offer',
   Comments = '/comments',
   Favorite = '/favorite',
 }
 
+export enum ErrorTypes {
+  Page_Not_Found = 404,
+  Server_Error = 500,
+}
+
 export const MAX_COMMENTS_LENGTH = 10;
 export const MAX_NEARBY_CITIES = 3;
+export const ERR_NETWORK = 'ERR_NETWORK';
+export const ERR_BAD_REQUEST = 'ERR_BAD_REQUEST';
