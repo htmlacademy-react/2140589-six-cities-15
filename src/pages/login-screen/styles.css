@@ -1,0 +1,8 @@
+button.locations__item-link {
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3069a6;
+  }
+}

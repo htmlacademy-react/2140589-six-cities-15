@@ -1,30 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
-import { FormEvent } from 'react';
-import { UserCredentionals } from '../../components/types/auth';
-import { useAppDisputch } from '../../components/store/types';
-import { loginUser } from '../../components/services/api-actions';
-import useAuth from '../../components/hooks/use-auth';
 import { AppRoutes } from '../../const';
 import { Navigate } from 'react-router-dom';
+import './styles.css';
+import useLoginScreen from './use-login-screen';
 
 function LoginScreen (): JSX.Element {
-  const dispatch = useAppDisputch();
-  const {isAuth} = useAuth();
-
+  const {isAuth, handleLoginSubmit, navigateToRandomCityOffers, randomCity} = useLoginScreen();
   {
     if (isAuth) {
       return <Navigate to={AppRoutes.Main} />;
     }
   }
-
-  const handleLoginSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-
-    const formData = new FormData(evt.currentTarget);
-    const credentionals = Object.fromEntries(formData) as UserCredentionals;
-    dispatch(loginUser(credentionals));
-  };
 
   return (
     <div className="page page--gray page--login">
@@ -70,9 +57,9 @@ function LoginScreen (): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
-                <span>Amsterdam</span>
-              </a>
+              <button className="locations__item-link" onClick={navigateToRandomCityOffers}>
+                <span>{randomCity}</span>
+              </button>
             </div>
           </section>
         </div>
