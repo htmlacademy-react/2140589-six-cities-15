@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, memo } from 'react';
 
 export type Rates = {
   value: number;
@@ -53,4 +53,4 @@ function ReviewsRatingFormStars ({ rating, onRateChange}: ReviewsRatingFormStars
   );
 }
 
-export default ReviewsRatingFormStars;
+export default memo(ReviewsRatingFormStars);

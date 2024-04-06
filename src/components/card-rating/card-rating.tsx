@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import useCardRating from './use-card-rating';
 
 type CardRatingProps = {
@@ -19,4 +20,4 @@ function CardRating ({rating, variant}: CardRatingProps) {
   );
 }
 
-export default CardRating;
+export default memo(CardRating);

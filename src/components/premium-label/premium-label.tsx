@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type PremiumLabelProps = {
   isPremium: boolean;
   variant: 'offerPage' | 'placeCard';
@@ -13,4 +15,4 @@ function PremiumLabel ({isPremium, variant}: PremiumLabelProps) {
   );
 }
 
-export default PremiumLabel;
+export default memo(PremiumLabel);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PlaceCard from '../place-card/place-card';
 import { OfferCardType } from '../types/offer';
 import { screenVariant } from '../types/screen-varinat';
@@ -19,4 +20,4 @@ function PlaceCardList ({offers, variant}: PlaceCardListProps) {
 }
 
 
-export default PlaceCardList;
+export default memo(PlaceCardList);

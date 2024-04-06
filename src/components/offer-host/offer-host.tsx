@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { User } from '../types/user';
 import UserStatus from '../user-status/user-status';
 
@@ -20,4 +21,4 @@ function OfferHost ({user, description}: OfferHostProps) {
   );
 }
 
-export default OfferHost;
+export default memo(OfferHost);

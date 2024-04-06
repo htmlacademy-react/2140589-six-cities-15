@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import CommentForm from '../comment-form/comment-form';
 import useAuth from '../hooks/use-auth';
 import ReviewItem from '../review-item/review-item';
@@ -26,4 +27,4 @@ function ReviewList ({comments}: ReviewListProps): JSX.Element {
   );
 }
 
-export default ReviewList;
+export default memo(ReviewList);

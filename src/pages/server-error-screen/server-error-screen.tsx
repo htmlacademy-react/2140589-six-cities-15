@@ -1,30 +1,25 @@
 import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
-import UserNavigation from '../../components/user-navigation/user-navigation';
+import Header from '../../components/header/header';
+import './styles.css';
 
-function PageErrorScreen(): JSX.Element {
+function ServerErrorScreen(): JSX.Element {
+  const errorCode = '500';
+  const errorMessage = 'Сервер не работает. Мы уже знаем о проблеме, скоро починим';
   return (
     <div className="page page--gray page--main">
       <Helmet>
-        <title>6 cities: page not found</title>
+        <title>6 cities: page error</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <Logo />
-            <UserNavigation />
-          </div>
-        </div>
-      </header>
+      <Header />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
         <div className="cities">
           <div className="cities__places-container cities__places-container--empty container">
             <section className="cities__no-places">
               <div className="cities__status-wrapper tabs__content">
-                <b className="cities__status">Ошибка 404</b>
+                <b className="cities__status">Ошибка {errorCode}</b>
                 <p className="cities__status-description">
-                  Страница не найдена.
+                  {errorMessage}
                 </p>
               </div>
             </section>
@@ -36,4 +31,4 @@ function PageErrorScreen(): JSX.Element {
   );
 }
 
-export default PageErrorScreen;
+export default ServerErrorScreen;

@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
 import Map from '../../components/map/map';
 import CityTabs from '../../components/city-tabs/city-tabs';
@@ -7,7 +6,7 @@ import EmptyScreen from '../empty-screen/empty-screen';
 import useMainScreen from './use-main-screen';
 import OfferSort from '../../components/offer-sort/offer-sort';
 import OfferSpinner from '../../components/offer-spinner/offer-spinner';
-import UserNavigation from '../../components/user-navigation/user-navigation';
+import Header from '../../components/header/header';
 
 function MainScreen (): JSX.Element {
   const {activeCity, offersByCity, points, center, placesAvalable, sortedOffers, status} = useMainScreen();
@@ -24,14 +23,7 @@ function MainScreen (): JSX.Element {
       <Helmet>
         <title>6 cities</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <Logo isActive/>
-            <UserNavigation />
-          </div>
-        </div>
-      </header>
+      <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs />
