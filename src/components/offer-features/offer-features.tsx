@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type OfferFeaturesProps = {
   type: string;
   bedrooms: number;
@@ -21,4 +23,4 @@ function OfferFeatures ({type, bedrooms, maxAdults}: OfferFeaturesProps) {
   );
 }
 
-export default OfferFeatures;
+export default memo(OfferFeatures);

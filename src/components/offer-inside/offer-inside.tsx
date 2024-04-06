@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type OfferInsideProps = {
   goods: string[];
 }
@@ -17,4 +19,4 @@ function OfferInside ({goods}: OfferInsideProps) {
   );
 }
 
-export default OfferInside;
+export default memo(OfferInside);

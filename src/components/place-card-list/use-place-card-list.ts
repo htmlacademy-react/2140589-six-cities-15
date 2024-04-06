@@ -1,6 +1,7 @@
 import { screenVariant } from '../types/screen-varinat';
 import { useAppDisputch } from '../store/types';
 import { appData } from '../store/app-data/slice';
+import { useCallback } from 'react';
 
 type usePlaceCardListProps = {
   variant: screenVariant;
@@ -8,8 +9,12 @@ type usePlaceCardListProps = {
 
 function usePlaceCardList({variant}: usePlaceCardListProps) {
   const dispatch = useAppDisputch();
-  const handleHoverCard = (id: string | null) => dispatch(appData.actions.setHoverOnCardId(id));
   const isHoverEnabled = variant === 'mainScreen';
+  const handleHoverCard = useCallback((id: string | null) => {
+    if (isHoverEnabled) {
+      dispatch(appData.actions.setHoverOnCardId(id));
+    }
+  }, [isHoverEnabled, dispatch]);
 
   let listClassName = '';
 

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import useBookmarkButton from './use-bookmark-button';
 
 type BookmarkButtonProp = {
@@ -27,4 +28,4 @@ function BookmarkButton ({isFavorite, variant, onButtonClick}: BookmarkButtonPro
   );
 }
 
-export default BookmarkButton;
+export default memo(BookmarkButton);

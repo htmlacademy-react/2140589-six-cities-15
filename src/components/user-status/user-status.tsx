@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { User } from '../types/user';
 import useUserStatus from './user-status-info';
 
@@ -26,4 +27,4 @@ function UserStatus ({variant, user}: UserStatusProps) {
   );
 }
 
-export default UserStatus;
+export default memo(UserStatus);

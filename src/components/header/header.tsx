@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import Logo from '../logo/logo';
 import UserNavigation from '../user-navigation/user-navigation';
 
-function Header () {
+function Header (): JSX.Element {
   return (
     <header className="header">
       <div className="container">
@@ -14,4 +15,4 @@ function Header () {
   );
 }
 
-export default Header;
+export default memo(Header);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import OfferImage from '../offer-image/offer-image';
 const MAX_IMAGES_COUNT = 6;
 type OfferGalleryProps = {
@@ -17,4 +18,4 @@ function OfferGallery ({images, title}: OfferGalleryProps) {
   );
 }
 
-export default OfferGallery;
+export default memo(OfferGallery);

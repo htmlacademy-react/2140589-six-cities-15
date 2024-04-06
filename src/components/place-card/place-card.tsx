@@ -9,6 +9,7 @@ import { screenVariant } from '../types/screen-varinat';
 import './styles.css';
 import { useAppDisputch } from '../store/types';
 import { toggleFavoriteOffers } from '../services/api-actions';
+import { memo } from 'react';
 
 type PlaceCardProps = {
   offer: OfferCardType;
@@ -56,4 +57,4 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
 }
 
 
-export default PlaceCard;
+export default memo(PlaceCard);

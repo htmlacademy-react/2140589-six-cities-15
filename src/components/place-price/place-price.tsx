@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type PlacePriceProps = {
   price: number;
   variant: 'offerPage' | 'placeCard';
@@ -18,4 +20,4 @@ function PlacePrice ({price, variant}: PlacePriceProps) {
   );
 }
 
-export default PlacePrice;
+export default memo(PlacePrice);

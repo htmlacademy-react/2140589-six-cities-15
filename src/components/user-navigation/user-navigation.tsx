@@ -3,6 +3,7 @@ import { AppRoutes } from '../../const';
 import OfferSpinner from '../offer-spinner/offer-spinner';
 import './styles.css';
 import useUserNavigation from './use-user-navigation';
+import { memo } from 'react';
 
 function UserNavigation() {
   const { isAuth, user, userLoader, favoriteOffers, handleLogOutButton } = useUserNavigation();
@@ -43,4 +44,4 @@ function UserNavigation() {
   );
 }
 
-export default UserNavigation;
+export default memo(UserNavigation);

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../const';
 import classNames from 'classnames';
+import { memo } from 'react';
 
 type LogoProps = {
   isActive?: boolean;
@@ -23,4 +24,4 @@ function Logo({isActive}: LogoProps): JSX.Element {
   );
 }
 
-export default Logo;
+export default memo(Logo);

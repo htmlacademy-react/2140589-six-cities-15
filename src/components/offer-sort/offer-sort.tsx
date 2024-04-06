@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { SortOptions } from '../../const';
 import classNames from 'classnames';
 import useOfferSort from './use-offer-sort';
@@ -40,4 +40,4 @@ function OfferSort() {
   );
 }
 
-export default OfferSort;
+export default memo(OfferSort);
