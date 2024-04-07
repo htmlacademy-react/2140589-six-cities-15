@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { getFavoriteOffers } from '../../components/store/offer-data/selectors';
-import { useAppSelector } from '../../components/store/types';
+import { useAppSelector } from '../../components/hooks/custom-hooks';
 
 function useFavoritesScreen () {
   const offers = useAppSelector(getFavoriteOffers);

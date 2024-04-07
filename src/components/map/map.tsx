@@ -4,9 +4,9 @@ import 'leaflet/dist/leaflet.css';
 import useMap from './use-map';
 import { Location, Point } from '../types/location';
 import './styles.css';
-import { useAppSelector } from '../store/types';
 import { activePin, defaultPin } from '../../const';
 import { getHoverOnCardId } from '../store/app-data/selectors';
+import { useAppSelector } from '../hooks/custom-hooks';
 
 type MapProps = {
   city: Location;

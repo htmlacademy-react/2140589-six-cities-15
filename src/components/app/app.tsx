@@ -6,11 +6,11 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import { useAppSelector } from '../store/types';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
 import ServerErrorScreen from '../../pages/server-error-screen/server-error-screen';
 import PageNotFoundScreen from '../../pages/page-not-found-screen/page-not-found-screen';
+import { useAppSelector } from '../hooks/custom-hooks';
 
 function App(): JSX.Element {
   const userAuth = useAppSelector((state) => state.authData.authStatus);

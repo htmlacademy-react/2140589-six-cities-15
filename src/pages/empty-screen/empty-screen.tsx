@@ -1,9 +1,9 @@
 import CityTabs from '../../components/city-tabs/city-tabs';
 import Header from '../../components/header/header';
-import { CityName } from '../../const';
+import { CityNames } from '../../const';
 
 type EmptyScreenProps = {
-  activeCity: CityName;
+  activeCity: CityNames;
 }
 
 function EmptyScreen ({activeCity}: EmptyScreenProps): JSX.Element {

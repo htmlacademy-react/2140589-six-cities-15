@@ -1,7 +1,7 @@
 import { FormEvent, useRef, useState } from 'react';
-import { useAppDisputch } from '../store/types';
 import { postComment } from '../services/api-actions';
 import { NewComment } from '../types/comments';
+import { useAppDisputch } from '../hooks/custom-hooks';
 
 const MIN__COMMENT__LENGTH = 50;
 const MAX__COMMENT__LENGTH = 300;

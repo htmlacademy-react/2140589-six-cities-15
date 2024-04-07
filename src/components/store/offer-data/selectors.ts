@@ -1,8 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { MAX_COMMENTS_LENGTH, MAX_NEARBY_CITIES } from '../../../const';
-import { RootState } from '../../types/utils';
-
-type OfferState = Pick<RootState, 'offerData'>;
+import { OfferState } from './types';
 
 export const getComments = createSelector((state: OfferState) => state.offerData.comments,
   (comments) => comments.toSorted((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, MAX_COMMENTS_LENGTH)

@@ -1,7 +1,4 @@
-import { RootState } from '../../types/utils';
-
-
-type AppState = Pick<RootState, 'appData'>;
+import { AppState } from './types';
 
 export const getActiveCity = (state: AppState) => state.appData.activeCity;
 export const getHoverOnCardId = (state: AppState) => state.appData.hoverOnCardId;

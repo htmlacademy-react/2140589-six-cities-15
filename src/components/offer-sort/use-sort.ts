@@ -1,6 +1,6 @@
 import { SortOptions } from '../../const';
+import { useAppSelector } from '../hooks/custom-hooks';
 import { getSortOption } from '../store/app-data/selectors';
-import { useAppSelector } from '../store/types';
 import { OfferCardType } from '../types/offer';
 
 

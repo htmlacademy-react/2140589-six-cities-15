@@ -1,6 +1,6 @@
 import { User } from './user';
 import { Location } from './location';
-import { CityName } from '../../const';
+import { CityNames } from '../../const';
 
 
 export type OfferCardType = {
@@ -10,7 +10,7 @@ export type OfferCardType = {
   price: number;
   previewImage: string;
   city: {
-    name: CityName;
+    name: CityNames;
     location: Location;
   };
   location: Location;

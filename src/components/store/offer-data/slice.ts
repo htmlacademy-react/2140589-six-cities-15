@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Comments } from '../../types/comments';
 import { OfferCardType } from '../../types/offer';
-import { Nullable } from '../../types/utils';
 import { fetchFavoriteOffers, fetchOffersAction, fetchPerOffer, postComment, toggleFavoriteOffers } from '../../services/api-actions';
+import { Nullable } from '../../types/nullable';
 
 type OfferState = {
   offers: OfferCardType[];

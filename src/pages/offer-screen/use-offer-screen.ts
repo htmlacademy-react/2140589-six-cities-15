@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom';
-import { useAppSelector, useAppDisputch } from '../../components/store/types';
-import { cityCenter } from '../../const';
+import { cityCenters } from '../../const';
 import { getActiveCity } from '../../components/store/app-data/selectors';
 import { getComments, getNearbyOffers, getOfferDetail, getOfferDetailFetched } from '../../components/store/offer-data/selectors';
 import { Point } from '../../components/types/location';
+import { useAppSelector, useAppDisputch } from '../../components/hooks/custom-hooks';
 
 function useOfferScreen() {
   const { id } = useParams();
   const activeCity = useAppSelector(getActiveCity);
-  const center = cityCenter[activeCity];
+  const center = cityCenters[activeCity];
   const dispatch = useAppDisputch();
   const offerLoaded = useAppSelector(getOfferDetailFetched);
 

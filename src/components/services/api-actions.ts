@@ -7,7 +7,7 @@ import { dropToken, saveToken } from './token';
 import { toast } from 'react-toastify';
 import { Comments, NewComment } from '../types/comments';
 import { redirectToRoute } from '../store/actions';
-import { RootState } from '../types/utils';
+import { RootState } from '../types/root-state';
 
 type MessageLoginErrorMessage = {
   errorType: string;
@@ -49,7 +49,6 @@ export const fetchFavoriteOffers = createAsyncThunk<OfferCardType[], undefined, 
     return data;
   },
 );
-
 
 export const fetchPerOffer = createAsyncThunk<{ offerDetail: OfferCardType; comments: Comments[]; nearbyOffers: OfferCardType[] }, string, {
   extra: AxiosInstance;
