@@ -16,7 +16,7 @@ const variantStarsClassName = {
 };
 
 function useCardRating ({rating, variant}: useCardRating) {
-  const width = `${Math.round(rating * 20)}%`;
+  const width = `${Math.round(rating) * 20}%`;
   const cardClassName = variantCardClassName[variant];
   const starsClassName = variantStarsClassName[variant];
 

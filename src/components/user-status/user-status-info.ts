@@ -16,7 +16,7 @@ function useUserStatus ({user, variant}: useUserStatusProps) {
 
   const {avatarUrl, isPro, name} = user;
 
-  const isHostPro = isPro ? 'offer__avatar-wrapper--pro' : undefined;
+  const isHostPro = isPro ? 'offer__avatar-wrapper--pro' : '';
 
   switch (variant) {
     case 'host':

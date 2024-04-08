@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { SortOptions } from '../../const';
-import { useAppDisputch, useAppSelector } from '../store/types';
 import { getSortOption } from '../store/app-data/selectors';
 import { appData } from '../store/app-data/slice';
+import { useAppSelector, useAppDisputch } from '../hooks/custom-hooks';
 
 function useOfferSort () {
   const sortRef = useRef<HTMLFormElement | null>(null);

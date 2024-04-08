@@ -7,9 +7,9 @@ import usePlaceCard from './use-place-card';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import { screenVariant } from '../types/screen-varinat';
 import './styles.css';
-import { useAppDisputch } from '../store/types';
 import { toggleFavoriteOffers } from '../services/api-actions';
 import { memo } from 'react';
+import { useAppDisputch } from '../hooks/custom-hooks';
 
 type PlaceCardProps = {
   offer: OfferCardType;
@@ -55,6 +55,5 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
     </article>
   );
 }
-
 
 export default memo(PlaceCard);

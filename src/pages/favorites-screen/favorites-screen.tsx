@@ -4,7 +4,6 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import useFavoritesScreen from './use-favorites-screen';
 
-
 function FavoritesScreen(): JSX.Element {
   const {offers, favEmptyScreen, pageClass, mainClass} = useFavoritesScreen();
   return (
@@ -12,7 +11,7 @@ function FavoritesScreen(): JSX.Element {
       <Helmet>
         <title>6 cities: favorites</title>
       </Helmet>
-      <Header />
+      <Header isActive={false}/>
       <main className={mainClass}>
         <div className="page__favorites-container container">
           {

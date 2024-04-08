@@ -9,7 +9,7 @@ import OfferSpinner from '../../components/offer-spinner/offer-spinner';
 import Header from '../../components/header/header';
 
 function MainScreen (): JSX.Element {
-  const {activeCity, offersByCity, points, center, placesAvalable, sortedOffers, status} = useMainScreen();
+  const {activeCity, offersByCity, points, center, placesAvalable, sortedOffers, status, quantity} = useMainScreen();
 
   {
     if (offersByCity.length === 0 && status !== 'fetching') {
@@ -23,7 +23,7 @@ function MainScreen (): JSX.Element {
       <Helmet>
         <title>6 cities</title>
       </Helmet>
-      <Header />
+      <Header isActive/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs />
@@ -33,7 +33,7 @@ function MainScreen (): JSX.Element {
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{placesAvalable} places to stay in {activeCity}</b>
+                  <b className="places__found">{placesAvalable} {quantity} to stay in {activeCity}</b>
                   <OfferSort />
                   <PlaceCardList offers={sortedOffers} variant='mainScreen'/>
                 </section>

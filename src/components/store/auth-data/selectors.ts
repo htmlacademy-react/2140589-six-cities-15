@@ -1,7 +1,4 @@
-import { RootState } from '../../types/utils';
-
-
-type AuthState = Pick<RootState, 'authData'>
+import { AuthState } from './types';
 
 export const getAuthStatus = (state:AuthState) => state.authData.authStatus;
 export const getUserAuthData = (state:AuthState) => state.authData.userAuthData;

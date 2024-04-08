@@ -1,7 +1,7 @@
 import { screenVariant } from '../types/screen-varinat';
-import { useAppDisputch } from '../store/types';
 import { appData } from '../store/app-data/slice';
 import { useCallback } from 'react';
+import { useAppDisputch } from '../hooks/custom-hooks';
 
 type usePlaceCardListProps = {
   variant: screenVariant;
@@ -33,4 +33,3 @@ function usePlaceCardList({variant}: usePlaceCardListProps) {
 }
 
 export default usePlaceCardList;
-

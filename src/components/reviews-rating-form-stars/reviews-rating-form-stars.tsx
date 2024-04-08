@@ -1,4 +1,6 @@
 import { Fragment, memo } from 'react';
+import { useAppSelector } from '../hooks/custom-hooks';
+import { getCommentsStatus } from '../store/offer-data/selectors';
 
 export type Rates = {
   value: number;
@@ -6,8 +8,8 @@ export type Rates = {
 }
 
 const rates: Rates[] = [
-  {value: 5, title: 'prefectly'},
-  {value: 4, title: 'well'},
+  {value: 5, title: 'perfect'},
+  {value: 4, title: 'good'},
   {value: 3, title: 'not bad'},
   {value: 2, title: 'badly'},
   {value: 1, title: 'terribly'},
@@ -19,6 +21,8 @@ type ReviewsRatingFormStarsProps = {
 }
 
 function ReviewsRatingFormStars ({ rating, onRateChange}: ReviewsRatingFormStarsProps) {
+  const commentFetchingStatus = useAppSelector(getCommentsStatus);
+
   return (
     <div className="reviews__rating-form form__rating">
       {
@@ -29,16 +33,17 @@ function ReviewsRatingFormStars ({ rating, onRateChange}: ReviewsRatingFormStars
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"
-                defaultValue={rate.value}
+                value={rate.value}
                 id={id}
                 type="radio"
                 checked={rate.value === rating}
                 onChange={onRateChange}
+                disabled={commentFetchingStatus === 'fetching'}
               />
               <label
                 htmlFor={id}
                 className="reviews__rating-label form__rating-label"
-                title="perfect"
+                title={rate.title}
               >
                 <svg className="form__star-image" width={37} height={33}>
                   <use xlinkHref="#icon-star" />

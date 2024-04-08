@@ -29,9 +29,11 @@ export const createAPI = (): AxiosInstance => {
     (error: AxiosError) => {
       if (error.response?.status === ErrorTypes.Page_Not_Found) {
         browserHistory.push(AppRoutes.Page_Error);
+        throw error;
       }
       if (error.code === ERR_NETWORK) {
         browserHistory.push(AppRoutes.Server_Error);
+        throw error;
       }
       throw error;
     }

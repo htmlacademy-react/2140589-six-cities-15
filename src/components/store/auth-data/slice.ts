@@ -1,8 +1,8 @@
 import { AuthorizationStatus } from '../../../const';
 import { fetchUser, loginUser, logoutUser } from '../../services/api-actions';
 import { UserAuthData } from '../../types/auth';
-import { Nullable } from '../../types/utils';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Nullable } from '../../types/nullable';
 
 type AuthData = {
   authStatus: AuthorizationStatus;
@@ -47,5 +47,3 @@ export const authData = createSlice({
       });
   },
 });
-
-
