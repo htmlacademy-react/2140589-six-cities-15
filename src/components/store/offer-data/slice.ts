@@ -13,6 +13,7 @@ type OfferState = {
   offerDetailFetched: 'idle' | 'fetching' | 'succeed' | 'failed';
   comments: Comments[];
   nearbyOffers: OfferCardType[];
+  postCommentStatus: 'idle' | 'fetching' | 'succeed' | 'failed';
 }
 
 const initialState:OfferState = {
@@ -24,6 +25,7 @@ const initialState:OfferState = {
   offerDetailFetched: 'idle',
   comments: [],
   nearbyOffers: [],
+  postCommentStatus: 'idle',
 };
 
 export const offerData = createSlice({
@@ -78,8 +80,15 @@ export const offerData = createSlice({
         state.nearbyOffers = action.payload.nearbyOffers;
         state.offerDetailFetched = 'succeed';
       })
+      .addCase(postComment.rejected, (state) => {
+        state.postCommentStatus = 'failed';
+      })
+      .addCase(postComment.pending, (state) => {
+        state.postCommentStatus = 'fetching';
+      })
       .addCase(postComment.fulfilled, (state, action) => {
         state.comments.push(action.payload);
+        state.postCommentStatus = 'succeed';
       });
   },
 });

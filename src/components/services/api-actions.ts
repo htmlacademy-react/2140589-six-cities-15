@@ -128,6 +128,6 @@ export const logoutUser = createAsyncThunk<void, undefined, {
     await api.delete(APIRoutes.Logout);
     dropToken();
     dispatch(fetchOffersAction());
-    dispatch(redirectToRoute(AppRoutes.Main));
+    dispatch(redirectToRoute(AppRoutes.Login));
   },
 );

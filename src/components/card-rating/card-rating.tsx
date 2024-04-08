@@ -8,6 +8,7 @@ type CardRatingProps = {
 
 function CardRating ({rating, variant}: CardRatingProps) {
   const {width, cardClassName, starsClassName} = useCardRating({rating, variant});
+
   return (
     <div className={cardClassName}>
       <div className={starsClassName}>

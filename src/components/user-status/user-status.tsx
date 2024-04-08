@@ -7,8 +7,8 @@ type UserStatusProps = {
   user: User;
 }
 
-function UserStatus ({variant, user}: UserStatusProps) {
-  const {width, height, userWrapperClassName, imgUserWpapperClassName, imgClassName, userNameClassName, avatarUrl, name, isPro} = useUserStatus({variant, user});
+function UserStatus({ variant, user }: UserStatusProps) {
+  const { width, height, userWrapperClassName, imgUserWpapperClassName, imgClassName, userNameClassName, avatarUrl, name, isPro } = useUserStatus({ variant, user });
   return (
     <div className={userWrapperClassName}>
       <div className={imgUserWpapperClassName}>
@@ -21,8 +21,8 @@ function UserStatus ({variant, user}: UserStatusProps) {
         />
       </div>
       <span className={userNameClassName}>{name}</span>
-      {isPro &&
-          <span className="offer__user-status">Pro</span>}
+      { isPro && variant === 'host' &&
+        <span className="offer__user-status">{isPro && 'Pro'}</span>}
     </div>
   );
 }

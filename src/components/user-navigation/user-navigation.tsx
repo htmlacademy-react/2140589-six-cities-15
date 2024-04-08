@@ -11,7 +11,7 @@ function UserNavigation() {
   return (
     <nav className="header__nav">
       {
-        userLoader === 'fetching' && !user ? <OfferSpinner variant='user'/> : undefined
+        userLoader === 'fetching' && !user ? <OfferSpinner variant='user' /> : undefined
       }
 
       {
@@ -22,7 +22,7 @@ function UserNavigation() {
                 className="header__nav-link header__nav-link--profile"
                 to={AppRoutes.Favorites}
               >
-                <div className="header__avatar-wrapper user__avatar-wrapper" style={{backgroundImage: `url(${user.avatarUrl})`, borderRadius: '50%'}}></div>
+                <div className="header__avatar-wrapper user__avatar-wrapper" style={{ backgroundImage: `url(${user.avatarUrl})`, borderRadius: '50%' }}></div>
                 <span className="header__user-name user__name">
                   {user.email}
                 </span>
@@ -36,9 +36,15 @@ function UserNavigation() {
             </li>
           </ul>
           :
-          <Link className="header__nav-link" to={AppRoutes.Login}>
-            <span className="header__signout">Sign in</span>
-          </Link>
+          <ul className="header__nav-list">
+            <li className="header__nav-item user">
+              <Link className="header__nav-link header__nav-link--profile" to={AppRoutes.Login}>
+                <div className="header__avatar-wrapper user__avatar-wrapper">
+                </div>
+                <span className="header__signout">Sign in</span>
+              </Link>
+            </li>
+          </ul>
       }
     </nav>
   );

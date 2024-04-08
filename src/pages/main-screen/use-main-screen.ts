@@ -14,8 +14,9 @@ function useMainScreen () {
   const center = cityCenters[activeCity];
   const placesAvalable = offersByCity.length;
   const sortedOffers = useSort(offersByCity);
+  const quantity = placesAvalable > 1 ? 'places' : 'place';
 
-  return {activeCity, offersByCity, points, center, placesAvalable, sortedOffers, status};
+  return {activeCity, offersByCity, points, center, placesAvalable, sortedOffers, status, quantity};
 }
 
 export default useMainScreen;

@@ -3,7 +3,7 @@ import useCommentForm from './use-comment-form';
 import './styles.css';
 
 function CommentForm () {
-  const {comment, rating, handleCommentChange, handleRatingChange, isSubmitDisabled, handleFormSubmit, formRef} = useCommentForm();
+  const {comment, rating, handleCommentChange, handleRatingChange, isSubmitDisabled, handleFormSubmit, formRef, commentFetchingStatus} = useCommentForm();
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit} ref={formRef}>
       <label className="reviews__label form__label" htmlFor="review">
@@ -18,6 +18,7 @@ function CommentForm () {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
         onChange={handleCommentChange}
+        disabled={commentFetchingStatus === 'fetching'}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
