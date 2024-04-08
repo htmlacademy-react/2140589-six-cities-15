@@ -6,7 +6,7 @@ export enum AppRoutes {
   Login = '/login',
   Favorites = '/favorites',
   Offer = '/offer/:id',
-  Page_Error = '/page-error',
+  Page_Error = '*',
   Server_Error = '/server-error',
 }
 

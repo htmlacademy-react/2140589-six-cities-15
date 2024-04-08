@@ -12,7 +12,7 @@ function FavoritesScreen(): JSX.Element {
       <Helmet>
         <title>6 cities: favorites</title>
       </Helmet>
-      <Header />
+      <Header isActive={false}/>
       <main className={mainClass}>
         <div className="page__favorites-container container">
           {

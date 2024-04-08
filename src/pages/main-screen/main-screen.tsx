@@ -23,7 +23,7 @@ function MainScreen (): JSX.Element {
       <Helmet>
         <title>6 cities</title>
       </Helmet>
-      <Header />
+      <Header isActive/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CityTabs />

@@ -33,7 +33,7 @@ function ReviewsRatingFormStars ({ rating, onRateChange}: ReviewsRatingFormStars
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"
-                defaultValue={rate.value}
+                value={rate.value}
                 id={id}
                 type="radio"
                 checked={rate.value === rating}

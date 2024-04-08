@@ -18,13 +18,18 @@ import useOfferScreen from './use-offer-screen';
 import Header from '../../components/header/header';
 import { appData } from '../../components/store/app-data/slice';
 import { AppRoutes } from '../../const';
+import { AxiosError } from 'axios';
 
 function OfferScreen(): JSX.Element {
   const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchPerOffer(id)).unwrap().catch();
+      dispatch(fetchPerOffer(id)).unwrap().catch((error) => {
+        if (error instanceof AxiosError) {
+          throw error;
+        }
+      });
       dispatch(appData.actions.setHoverOnCardId(id));
     }
     return () => {
@@ -50,7 +55,7 @@ function OfferScreen(): JSX.Element {
       <Helmet>
         <title>6 cities: {title}</title>
       </Helmet>
-      <Header />
+      <Header isActive={false}/>
       <main className="page__main page__main--offer">
         <section className="offer">
           <OfferGallery images={images} title={title}/>

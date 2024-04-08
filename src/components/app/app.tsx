@@ -11,9 +11,10 @@ import browserHistory from '../../browser-history';
 import ServerErrorScreen from '../../pages/server-error-screen/server-error-screen';
 import PageNotFoundScreen from '../../pages/page-not-found-screen/page-not-found-screen';
 import { useAppSelector } from '../hooks/custom-hooks';
+import { getAuthStatus } from '../store/auth-data/selectors';
 
 function App(): JSX.Element {
-  const userAuth = useAppSelector((state) => state.authData.authStatus);
+  const userAuth = useAppSelector(getAuthStatus);
   return (
     <HelmetProvider>
       <HistoryRouter history={browserHistory}>
