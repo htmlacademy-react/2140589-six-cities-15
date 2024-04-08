@@ -37,7 +37,6 @@ function Map({city, points, variant}: MapProps) {
     }
   }, [map, points, hoverCardId]);
 
-
   return (
     <section className={className} style={{height: height}}
       ref={mapRef}

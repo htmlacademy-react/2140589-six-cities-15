@@ -56,5 +56,4 @@ function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element 
   );
 }
 
-
 export default memo(PlaceCard);

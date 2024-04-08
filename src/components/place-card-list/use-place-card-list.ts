@@ -33,4 +33,3 @@ function usePlaceCardList({variant}: usePlaceCardListProps) {
 }
 
 export default usePlaceCardList;
-

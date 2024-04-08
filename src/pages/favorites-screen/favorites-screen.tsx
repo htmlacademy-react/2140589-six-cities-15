@@ -4,7 +4,6 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import useFavoritesScreen from './use-favorites-screen';
 
-
 function FavoritesScreen(): JSX.Element {
   const {offers, favEmptyScreen, pageClass, mainClass} = useFavoritesScreen();
   return (

@@ -6,13 +6,13 @@ import { appData } from '../store/app-data/slice';
 import { memo, useCallback } from 'react';
 import { useAppSelector, useAppDisputch } from '../hooks/custom-hooks';
 
-
 function CityTabs(): JSX.Element {
   const activeCity = useAppSelector(getActiveCity);
   const dispatch = useAppDisputch();
   const handleCityTabsClick = useCallback((city: CityNames) => {
     dispatch(appData.actions.setActiveCity(city));
   }, [dispatch]);
+
   return (
     <div className="tabs">
       <section className="locations container">

@@ -19,5 +19,4 @@ function PlaceCardList ({offers, variant}: PlaceCardListProps) {
   );
 }
 
-
 export default memo(PlaceCardList);
