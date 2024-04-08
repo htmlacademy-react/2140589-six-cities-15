@@ -3,6 +3,7 @@ import { postComment } from '../services/api-actions';
 import { NewComment } from '../types/comments';
 import { useAppDisputch, useAppSelector } from '../hooks/custom-hooks';
 import { getCommentsStatus } from '../store/offer-data/selectors';
+import { AxiosError } from 'axios';
 
 const MIN__COMMENT__LENGTH = 50;
 const MAX__COMMENT__LENGTH = 300;
@@ -30,7 +31,9 @@ function useCommentForm () {
     const newComment: NewComment = {rating, comment};
     handleFormDisabler();
     dispatch(postComment(newComment)).unwrap().catch((error) => {
-      throw error;
+      if (error instanceof AxiosError) {
+        throw error;
+      }
     }).then(resetForm).finally(handleFormDisabler);
   };
 
