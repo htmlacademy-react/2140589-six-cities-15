@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { AppRoutes } from '../../const';
 import { generatePath } from 'react-router-dom';
-import { ScreenVariant } from '../types/screen-varinat';
+import { ScreenVariant } from '../../types/screen-varinat';
 
 type UsePlaceCardProps = {
   variant: ScreenVariant;

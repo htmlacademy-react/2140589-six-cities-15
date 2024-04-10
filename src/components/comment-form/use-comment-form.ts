@@ -1,8 +1,8 @@
 import { FormEvent, useRef, useState } from 'react';
-import { postComment } from '../services/api-actions';
-import { NewComment } from '../types/comments';
-import { useAppDisputch, useAppSelector } from '../hooks/custom-hooks';
-import { getCommentsStatus } from '../store/offer-data/selectors';
+import { postComment } from '../../services/api-actions';
+import { NewComment } from '../../types/comments';
+import { useAppDisputch, useAppSelector } from '../../hooks/custom-hooks';
+import { getCommentsStatus } from '../../store/offer-data/selectors';
 import { AxiosError } from 'axios';
 import { CommentLenght } from '../../const';
 

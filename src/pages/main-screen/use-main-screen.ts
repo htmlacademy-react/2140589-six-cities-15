@@ -1,8 +1,8 @@
-import { useAppSelector } from '../../components/hooks/custom-hooks';
+import { useAppSelector } from '../../hooks/custom-hooks';
 import { useSort } from '../../components/offer-sort/use-sort';
-import { getActiveCity } from '../../components/store/app-data/selectors';
-import { getOffers, getStatus } from '../../components/store/offer-data/selectors';
-import { Point } from '../../components/types/location';
+import { getActiveCity } from '../../store/app-data/selectors';
+import { getOffers, getStatus } from '../../store/offer-data/selectors';
+import { Point } from '../../types/location';
 import { cityCenters } from '../../const';
 
 function useMainScreen () {

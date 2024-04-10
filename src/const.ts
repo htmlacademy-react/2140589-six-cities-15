@@ -1,4 +1,4 @@
-import { Location } from './components/types/location';
+import { Location } from './types/location';
 import leaflet from 'leaflet';
 
 export enum AppRoutes {

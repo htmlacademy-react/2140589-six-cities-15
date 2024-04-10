@@ -2,11 +2,11 @@ import {useRef, useEffect} from 'react';
 import leaflet, {layerGroup} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from './use-map';
-import { Location, Point } from '../types/location';
+import { Location, Point } from '../../types/location';
 import './styles.css';
 import { activePin, defaultPin } from '../../const';
-import { getHoverOnCardId } from '../store/app-data/selectors';
-import { useAppSelector } from '../hooks/custom-hooks';
+import { getHoverOnCardId } from '../../store/app-data/selectors';
+import { useAppSelector } from '../../hooks/custom-hooks';
 
 type MapProps = {
   city: Location;

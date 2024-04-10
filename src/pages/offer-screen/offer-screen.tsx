@@ -12,14 +12,14 @@ import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
 import { useEffect } from 'react';
-import { fetchPerOffer, toggleFavoriteOffers } from '../../components/services/api-actions';
+import { fetchPerOffer, toggleFavoriteOffers } from '../../services/api-actions';
 import OfferSpinner from '../../components/offer-spinner/offer-spinner';
 import useOfferScreen from './use-offer-screen';
 import Header from '../../components/header/header';
-import { appData } from '../../components/store/app-data/slice';
+import { appData } from '../../store/app-data/slice';
 import { AppRoutes } from '../../const';
 import { AxiosError } from 'axios';
-import { offerData } from '../../components/store/offer-data/slice';
+import { offerData } from '../../store/offer-data/slice';
 
 function OfferScreen(): JSX.Element {
   const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();

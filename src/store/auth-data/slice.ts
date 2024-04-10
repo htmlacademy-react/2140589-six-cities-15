@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../../../const';
+import { AuthorizationStatus } from '../../const';
 import { fetchUser, loginUser, logoutUser } from '../../services/api-actions';
 import { UserAuthData } from '../../types/auth';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';

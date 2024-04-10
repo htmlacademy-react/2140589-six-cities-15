@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { MAX_NEARBY_CITIES } from '../../../const';
+import { MAX_NEARBY_CITIES } from '../../const';
 import { OfferState } from './types';
 
 export const getComments = createSelector((state: OfferState) => state.offerData.comments,

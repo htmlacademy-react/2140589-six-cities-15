@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { AppRoutes, CityNames } from '../../const';
 import classNames from 'classnames';
-import { getActiveCity } from '../store/app-data/selectors';
-import { appData } from '../store/app-data/slice';
+import { getActiveCity } from '../../store/app-data/selectors';
+import { appData } from '../../store/app-data/slice';
 import { memo, useCallback } from 'react';
-import { useAppSelector, useAppDisputch } from '../hooks/custom-hooks';
+import { useAppSelector, useAppDisputch } from '../../hooks/custom-hooks';
 
 function CityTabs(): JSX.Element {
   const activeCity = useAppSelector(getActiveCity);

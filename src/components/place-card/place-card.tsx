@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { OfferCardType } from '../types/offer';
+import { OfferCardType } from '../../types/offer';
 import PremiumLabel from '../premium-label/premium-label';
 import CardRating from '../card-rating/card-rating';
 import PlacePrice from '../place-price/place-price';
 import usePlaceCard from './use-place-card';
 import BookmarkButton from '../bookmark-button/bookmark-button';
-import { ScreenVariant } from '../types/screen-varinat';
+import { ScreenVariant } from '../../types/screen-varinat';
 import './styles.css';
-import { toggleFavoriteOffers } from '../services/api-actions';
+import { toggleFavoriteOffers } from '../../services/api-actions';
 import { memo } from 'react';
-import { useAppDisputch } from '../hooks/custom-hooks';
+import { useAppDisputch } from '../../hooks/custom-hooks';
 
 type PlaceCardProps = {
   offer: OfferCardType;

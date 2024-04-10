@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus } from '../const';
 import { getAuthStatus } from '../store/auth-data/selectors';
 import { useAppSelector } from './custom-hooks';
 

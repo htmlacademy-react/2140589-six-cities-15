@@ -1,7 +1,7 @@
-import { ScreenVariant } from '../types/screen-varinat';
-import { appData } from '../store/app-data/slice';
+import { ScreenVariant } from '../../types/screen-varinat';
+import { appData } from '../../store/app-data/slice';
 import { useCallback } from 'react';
-import { useAppDisputch } from '../hooks/custom-hooks';
+import { useAppDisputch } from '../../hooks/custom-hooks';
 
 type usePlaceCardListProps = {
   variant: ScreenVariant;

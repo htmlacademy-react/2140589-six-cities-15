@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import { getToken } from './token';
-import browserHistory from '../../browser-history';
-import { AppRoutes, ERR_NETWORK, ErrorTypes } from '../../const';
+import browserHistory from '../browser-history';
+import { AppRoutes, ERR_NETWORK, ErrorTypes } from '../const';
 
 const BACKEND_URL = 'https://15.design.htmlacademy.pro/six-cities';
 const REQUEST_TIMEOUT = 5000;
