@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import PlaceCard from '../place-card/place-card';
-import { OfferCardType } from '../types/offer';
-import { screenVariant } from '../types/screen-varinat';
+import { OfferCardType } from '../../types/offer';
+import { ScreenVariant } from '../../types/screen-varinat';
 import usePlaceCardList from './use-place-card-list';
 
 type PlaceCardListProps = {
   offers: OfferCardType[];
-  variant: screenVariant;
+  variant: ScreenVariant;
 }
 
 function PlaceCardList ({offers, variant}: PlaceCardListProps) {

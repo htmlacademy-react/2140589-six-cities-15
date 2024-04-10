@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { User } from '../types/user';
+import { User } from '../../types/user';
 import UserStatus from '../user-status/user-status';
 
 type OfferHostProps = {

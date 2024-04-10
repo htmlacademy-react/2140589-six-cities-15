@@ -1,5 +1,5 @@
 import PlaceCardList from '../place-card-list/place-card-list';
-import { OfferCardType } from '../types/offer';
+import { OfferCardType } from '../../types/offer';
 
 type FavoritePlaceListProps = {
   offers: OfferCardType[];

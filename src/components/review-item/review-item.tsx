@@ -1,7 +1,7 @@
 import CardRating from '../card-rating/card-rating';
-import { Comments } from '../types/comments';
+import { Comments } from '../../types/comments';
 import UserStatus from '../user-status/user-status';
-import { formatDate } from '../utils/utils';
+import { formatDate } from '../../utils/utils';
 
 type ReviewItemProps = {
   review: Comments;

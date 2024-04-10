@@ -1,11 +1,11 @@
 import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../components/hooks/use-auth';
-import { loginUser } from '../../components/services/api-actions';
-import { appData } from '../../components/store/app-data/slice';
-import { UserCredentionals } from '../../components/types/auth';
+import useAuth from '../../hooks/use-auth';
+import { loginUser } from '../../services/api-actions';
+import { appData } from '../../store/app-data/slice';
+import { UserCredentionals } from '../../types/auth';
 import { CityNames, AppRoutes } from '../../const';
-import { useAppDisputch } from '../../components/hooks/custom-hooks';
+import { useAppDisputch } from '../../hooks/custom-hooks';
 
 function useLoginScreen () {
   const dispatch = useAppDisputch();
@@ -23,12 +23,12 @@ function useLoginScreen () {
   const randomIndex = Math.floor(Math.random() * (cityNames.length - 1));
   const randomCity = cityNames[randomIndex];
 
-  const navigateToRandomCityOffers = () => {
+  const handleToRandomCityOffers = () => {
     navigate(AppRoutes.Main);
     dispatch(appData.actions.setActiveCity(randomCity));
   };
 
-  return {isAuth, handleLoginSubmit, navigateToRandomCityOffers, randomCity};
+  return {isAuth, handleLoginSubmit, handleToRandomCityOffers, randomCity};
 }
 
 export default useLoginScreen;

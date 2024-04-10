@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import CommentForm from '../comment-form/comment-form';
-import useAuth from '../hooks/use-auth';
+import useAuth from '../../hooks/use-auth';
 import ReviewItem from '../review-item/review-item';
-import { Comments } from '../types/comments';
+import { Comments } from '../../types/comments';
 import { MAX_COMMENTS_LENGTH } from '../../const';
 
 type ReviewListProps = {

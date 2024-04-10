@@ -1,6 +1,6 @@
 import { AxiosError, AxiosInstance } from 'axios';
 import { OfferCardType } from '../types/offer';
-import { APIRoutes } from '../../const';
+import { APIRoutes } from '../const';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { UserAuthData, UserCredentionals } from '../types/auth';
 import { dropToken, saveToken } from './token';

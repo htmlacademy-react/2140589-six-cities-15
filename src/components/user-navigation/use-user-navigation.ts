@@ -1,8 +1,8 @@
-import { useAppSelector, useAppDisputch } from '../hooks/custom-hooks';
-import useAuth from '../hooks/use-auth';
-import { logoutUser } from '../services/api-actions';
-import { getUserAuthData, getUserStatus } from '../store/auth-data/selectors';
-import { getFavoriteOffers } from '../store/offer-data/selectors';
+import { useAppSelector, useAppDisputch } from '../../hooks/custom-hooks';
+import useAuth from '../../hooks/use-auth';
+import { logoutUser } from '../../services/api-actions';
+import { getUserAuthData, getUserStatus } from '../../store/auth-data/selectors';
+import { getFavoriteOffers } from '../../store/offer-data/selectors';
 
 function useUserNavigation () {
   const { isAuth } = useAuth();

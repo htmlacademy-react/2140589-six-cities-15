@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { CityNames, SortOptions } from '../../../const';
+import { CityNames, SortOptions } from '../../const';
 import { Nullable } from 'vitest';
 
 type AppData = {

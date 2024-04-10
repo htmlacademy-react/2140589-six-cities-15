@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import useAuth from '../hooks/use-auth';
+import useAuth from '../../hooks/use-auth';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../const';
 

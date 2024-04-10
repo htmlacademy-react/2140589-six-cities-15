@@ -1,4 +1,4 @@
-import { Location } from './components/types/location';
+import { Location } from './types/location';
 import leaflet from 'leaflet';
 
 export enum AppRoutes {
@@ -6,7 +6,7 @@ export enum AppRoutes {
   Login = '/login',
   Favorites = '/favorites',
   Offer = '/offer/:id',
-  Page_Error = '*',
+  Page_Error = '/page-not-found',
   Server_Error = '/server-error',
 }
 
@@ -25,7 +25,7 @@ export enum CityNames {
   Dusseldorf = 'Dusseldorf',
 }
 
-export const cityCenters: Record <CityNames, Location> = {
+export const cityCenters: Record<CityNames, Location> = {
   [CityNames.Paris]: {
     'latitude': 48.85661,
     'longitude': 2.351499,
@@ -67,14 +67,14 @@ export enum SortOptions {
 
 export const defaultPin = leaflet.icon({
   iconUrl: 'img/pin.svg',
-  iconSize: [27,39],
-  iconAnchor: [12,20],
+  iconSize: [27, 39],
+  iconAnchor: [12, 20],
 });
 
 export const activePin = leaflet.icon({
   iconUrl: 'img/pin-active.svg',
-  iconSize: [27,39],
-  iconAnchor: [12,20],
+  iconSize: [27, 39],
+  iconAnchor: [12, 20],
 });
 
 export enum APIRoutes {
@@ -91,7 +91,13 @@ export enum ErrorTypes {
   Server_Error = 500,
 }
 
+export const CommentLenght = {
+  MinCommentLength: 50,
+  MaxCommentLength: 300,
+} as const;
+
 export const MAX_COMMENTS_LENGTH = 10;
 export const MAX_NEARBY_CITIES = 3;
 export const ERR_NETWORK = 'ERR_NETWORK';
 export const ERR_BAD_REQUEST = 'ERR_BAD_REQUEST';
+export const MAX_IMAGES_COUNT = 6;

@@ -1,7 +1,7 @@
 import { SortOptions } from '../../const';
-import { useAppSelector } from '../hooks/custom-hooks';
-import { getSortOption } from '../store/app-data/selectors';
-import { OfferCardType } from '../types/offer';
+import { useAppSelector } from '../../hooks/custom-hooks';
+import { getSortOption } from '../../store/app-data/selectors';
+import { OfferCardType } from '../../types/offer';
 
 export function useSort (offers: OfferCardType[]) {
   const currentSorting = useAppSelector(getSortOption);

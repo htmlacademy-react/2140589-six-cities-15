@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Provider } from 'react-redux';
-import { store } from './components/store';
-import { fetchOffersAction, fetchUser } from './components/services/api-actions';
+import { store } from './store';
+import { fetchOffersAction, fetchUser } from './services/api-actions';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

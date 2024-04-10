@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { MAX_NEARBY_CITIES } from '../../../const';
+import { MAX_NEARBY_CITIES } from '../../const';
 import { OfferState } from './types';
 
 export const getComments = createSelector((state: OfferState) => state.offerData.comments,
@@ -13,5 +13,4 @@ export const getOfferDetailFetched = (state: OfferState) => state.offerData.offe
 export const getOffers = (state: OfferState) => state.offerData.offers;
 export const getStatus = (state: OfferState) => state.offerData.status;
 export const getFavoriteOffers = (state: OfferState) => state.offerData.favoriteOffers;
-export const getFavoriteStatus = (state: OfferState) => state.offerData.favoriteFetched;
 export const getCommentsStatus = (state: OfferState) => state.offerData.postCommentStatus;

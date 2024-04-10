@@ -1,11 +1,11 @@
-import { User } from '../types/user';
+import { User } from '../../types/user';
 
-type useUserStatusProps = {
+type UseUserStatusProps = {
   variant: 'host' | 'user';
   user: User;
 }
 
-function useUserStatus ({user, variant}: useUserStatusProps) {
+function useUserStatus ({user, variant}: UseUserStatusProps) {
   let width: number;
   let height: number;
   let userWrapperClassName = '';

@@ -6,7 +6,7 @@ import './styles.css';
 import useLoginScreen from './use-login-screen';
 
 function LoginScreen (): JSX.Element {
-  const {isAuth, handleLoginSubmit, navigateToRandomCityOffers, randomCity} = useLoginScreen();
+  const {isAuth, handleLoginSubmit, handleToRandomCityOffers, randomCity} = useLoginScreen();
   {
     if (isAuth) {
       return <Navigate to={AppRoutes.Main} />;
@@ -57,7 +57,7 @@ function LoginScreen (): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <button className="locations__item-link" onClick={navigateToRandomCityOffers}>
+              <button className="locations__item-link" onClick={handleToRandomCityOffers}>
                 <span>{randomCity}</span>
               </button>
             </div>

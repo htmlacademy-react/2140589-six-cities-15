@@ -1,6 +1,6 @@
 import { Fragment, memo } from 'react';
-import { useAppSelector } from '../hooks/custom-hooks';
-import { getCommentsStatus } from '../store/offer-data/selectors';
+import { useAppSelector } from '../../hooks/custom-hooks';
+import { getCommentsStatus } from '../../store/offer-data/selectors';
 
 export type Rates = {
   value: number;

@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { cityCenters } from '../../const';
-import { getActiveCity } from '../../components/store/app-data/selectors';
-import { getComments, getNearbyOffers, getOfferDetail, getOfferDetailFetched } from '../../components/store/offer-data/selectors';
-import { Point } from '../../components/types/location';
-import { useAppSelector, useAppDisputch } from '../../components/hooks/custom-hooks';
+import { getActiveCity } from '../../store/app-data/selectors';
+import { getComments, getNearbyOffers, getOfferDetail, getOfferDetailFetched } from '../../store/offer-data/selectors';
+import { Point } from '../../types/location';
+import { useAppSelector, useAppDisputch } from '../../hooks/custom-hooks';
 
 function useOfferScreen() {
   const { id } = useParams();

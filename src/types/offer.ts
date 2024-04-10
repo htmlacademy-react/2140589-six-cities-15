@@ -1,6 +1,6 @@
 import { User } from './user';
 import { Location } from './location';
-import { CityNames } from '../../const';
+import { CityNames } from '../const';
 
 
 export type OfferCardType = {
