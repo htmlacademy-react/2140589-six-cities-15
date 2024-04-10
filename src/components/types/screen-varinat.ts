@@ -1,1 +1,1 @@
-export type screenVariant = 'favoriteScreen' | 'mainScreen' | 'offerScreen';
+export type ScreenVariant = 'favoriteScreen' | 'mainScreen' | 'offerScreen';

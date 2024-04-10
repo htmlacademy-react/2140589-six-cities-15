@@ -23,8 +23,8 @@ function App(): JSX.Element {
           <Route path={AppRoutes.Login} element={<LoginScreen />} />
           <Route path={AppRoutes.Favorites} element={<PrivateRoute authorizationStatus={userAuth}><FavoritesScreen /></PrivateRoute>} />
           <Route path={AppRoutes.Offer} element={<OfferScreen />} />
-          <Route path={AppRoutes.Page_Error} element={<PageNotFoundScreen />} />
           <Route path={AppRoutes.Server_Error} element={<ServerErrorScreen />} />
+          <Route path='*' element={<PageNotFoundScreen />} />
         </Routes>
       </HistoryRouter>
     </HelmetProvider>

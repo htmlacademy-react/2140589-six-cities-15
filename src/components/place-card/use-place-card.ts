@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import { AppRoutes } from '../../const';
 import { generatePath } from 'react-router-dom';
-import { screenVariant } from '../types/screen-varinat';
+import { ScreenVariant } from '../types/screen-varinat';
 
 type UsePlaceCardProps = {
-  variant: screenVariant;
+  variant: ScreenVariant;
   id: string;
   onCardHover?: (id: string | null) => void;
 }

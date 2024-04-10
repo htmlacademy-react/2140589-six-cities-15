@@ -19,6 +19,7 @@ import Header from '../../components/header/header';
 import { appData } from '../../components/store/app-data/slice';
 import { AppRoutes } from '../../const';
 import { AxiosError } from 'axios';
+import { offerData } from '../../components/store/offer-data/slice';
 
 function OfferScreen(): JSX.Element {
   const {id, center, dispatch, offerLoaded, offer, comments, nearbyOffers, nearbyPoints } = useOfferScreen();
@@ -37,6 +38,10 @@ function OfferScreen(): JSX.Element {
     };
   },[dispatch,id]);
 
+  if (offerLoaded === 'failed') {
+    dispatch(offerData.actions.resetStatus());
+    return <Navigate to="/offer-not-found" />;
+  }
   if(offerLoaded === 'fetching' || offerLoaded === 'idle') {
     return <OfferSpinner variant='pageScreen'/>;
   }

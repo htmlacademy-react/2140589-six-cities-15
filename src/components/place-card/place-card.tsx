@@ -5,7 +5,7 @@ import CardRating from '../card-rating/card-rating';
 import PlacePrice from '../place-price/place-price';
 import usePlaceCard from './use-place-card';
 import BookmarkButton from '../bookmark-button/bookmark-button';
-import { screenVariant } from '../types/screen-varinat';
+import { ScreenVariant } from '../types/screen-varinat';
 import './styles.css';
 import { toggleFavoriteOffers } from '../services/api-actions';
 import { memo } from 'react';
@@ -14,7 +14,7 @@ import { useAppDisputch } from '../hooks/custom-hooks';
 type PlaceCardProps = {
   offer: OfferCardType;
   onCardHover?: (id: string | null) => void;
-  variant: screenVariant;
+  variant: ScreenVariant;
 }
 
 function PlaceCard ({offer, onCardHover, variant}: PlaceCardProps): JSX.Element {

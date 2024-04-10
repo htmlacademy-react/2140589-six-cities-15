@@ -23,12 +23,12 @@ function useLoginScreen () {
   const randomIndex = Math.floor(Math.random() * (cityNames.length - 1));
   const randomCity = cityNames[randomIndex];
 
-  const navigateToRandomCityOffers = () => {
+  const handleToRandomCityOffers = () => {
     navigate(AppRoutes.Main);
     dispatch(appData.actions.setActiveCity(randomCity));
   };
 
-  return {isAuth, handleLoginSubmit, navigateToRandomCityOffers, randomCity};
+  return {isAuth, handleLoginSubmit, handleToRandomCityOffers, randomCity};
 }
 
 export default useLoginScreen;

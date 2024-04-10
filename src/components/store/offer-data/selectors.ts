@@ -13,5 +13,4 @@ export const getOfferDetailFetched = (state: OfferState) => state.offerData.offe
 export const getOffers = (state: OfferState) => state.offerData.offers;
 export const getStatus = (state: OfferState) => state.offerData.status;
 export const getFavoriteOffers = (state: OfferState) => state.offerData.favoriteOffers;
-export const getFavoriteStatus = (state: OfferState) => state.offerData.favoriteFetched;
 export const getCommentsStatus = (state: OfferState) => state.offerData.postCommentStatus;

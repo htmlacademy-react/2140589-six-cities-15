@@ -16,7 +16,7 @@ type OfferState = {
   postCommentStatus: 'idle' | 'fetching' | 'succeed' | 'failed';
 }
 
-const initialState:OfferState = {
+const initialState: OfferState = {
   offers: [],
   favoriteOffers: [],
   favoriteFetched: 'idle',
@@ -31,7 +31,11 @@ const initialState:OfferState = {
 export const offerData = createSlice({
   name: 'offerData',
   initialState,
-  reducers: {},
+  reducers: {
+    resetStatus(state) {
+      state.offerDetailFetched = 'idle';
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchOffersAction.pending, (state) => {
@@ -64,7 +68,7 @@ export const offerData = createSlice({
         if (offerIndex > -1) {
           state.nearbyOffers[offerIndex] = updatedOffer;
         }
-        if(state.offerDetail?.id) {
+        if (state.offerDetail?.id) {
           state.offerDetail.isFavorite = updatedOffer.isFavorite;
         }
       })
