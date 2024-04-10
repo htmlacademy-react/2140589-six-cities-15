@@ -100,3 +100,4 @@ export const MAX_COMMENTS_LENGTH = 10;
 export const MAX_NEARBY_CITIES = 3;
 export const ERR_NETWORK = 'ERR_NETWORK';
 export const ERR_BAD_REQUEST = 'ERR_BAD_REQUEST';
+export const MAX_IMAGES_COUNT = 6;

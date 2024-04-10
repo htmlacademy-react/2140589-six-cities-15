@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import OfferImage from '../offer-image/offer-image';
-const MAX_IMAGES_COUNT = 6;
+import { MAX_IMAGES_COUNT } from '../../const';
+
 type OfferGalleryProps = {
   images: string[];
   title: string;
